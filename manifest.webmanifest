@@ -1,0 +1,16 @@
+{
+  "name": "Roadbound Quest Log",
+  "short_name": "Roadbound",
+  "description": "A co-op real-life road trip game for two.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ece2cb",
+  "theme_color": "#ece2cb",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

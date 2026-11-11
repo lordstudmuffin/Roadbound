@@ -1,0 +1,155 @@
+{
+  "number": 1,
+  "season": 1,
+  "issued": "2026-11-11",
+  "title": "The Tyrants of Park Boulevard",
+  "tagline": "More than a hundred life-size dinosaurs are standing in the trees at the mouth of Ogden Canyon.",
+  "why": "Ogden's George S. Eccles Dinosaur Park is an 8.5-acre sculpture park along the Ogden River Parkway, filled with more than one hundred full-size dinosaur sculptures, some with robotics and sound. It opened in April 1993. Two of its residents, Baryonyx and Carnotaurus, are the same species that showed up in the Jurassic World trailer. Indoors there is a paleontology museum with real fossils and a lab where you can watch fossil prep, plus a gem and mineral museum. It is odd, a little eerie in winter light, and fifteen minutes from home.",
+  "bestDays": "Saturday, Nov 14 is ideal. Any Tuesday to Saturday works. The park is closed Sundays and Mondays in winter, closed on Thanksgiving (Nov 26), and closed Dec 20 to Jan 4 for maintenance.",
+  "nightOk": false,
+  "place": {
+    "name": "George S. Eccles Dinosaur Park",
+    "short": "the Dinosaur Park",
+    "address": "1544 Park Blvd, Ogden, UT 84401",
+    "lat": 41.2374,
+    "lon": -111.9383,
+    "hours": "Winter hours (Nov 1 to Mar 14): Tuesday to Saturday, 10 AM to 4 PM. The outside park stays open until 5 PM. Closed Sundays and Mondays.",
+    "cost": "$12 each for ages 2 and up, so $24 for two",
+    "parking": "The park's pages don't describe parking. Phone (801) 393-3466 if you want to ask before you go."
+  },
+  "drive": {
+    "summary": "About 8 miles and 15 to 20 minutes from Riverdale, all on paved city streets through Ogden. Well inside your 10-mile limit."
+  },
+  "conditions": {
+    "checked": "Nov 11, 2026",
+    "forecast": "The National Weather Service forecast for Salt Lake City, 35 miles south, has Saturday Nov 14 mostly sunny with a high of 62°F and no precipitation or alerts (issued Nov 8). The Ogden forecast page would not load current data for me, so check it yourself that morning.",
+    "roads": "City streets only. With a dry, mild forecast, no snow or ice is expected. UDOT's latest closure notice for Weber County (Nov 5) covered Nov 5 to 9 only.",
+    "sunset": "About 5:17 PM on Sat Nov 14, with last light about 5:46 PM (Salt Lake City times; Ogden is within a minute or so).",
+    "car": "Fine for a Sentra. No dirt, gravel, canyon or mountain driving."
+  },
+  "plan": {
+    "steps": [
+      { "time": "1:30 PM", "text": "Leave Riverdale. City streets to Park Boulevard in Ogden." },
+      { "time": "1:50 PM", "text": "Arrive at the Dinosaur Park. Tickets are $12 each." },
+      { "time": "1:50–4:00", "text": "Do the indoor museums first, since they close at 4 PM. Then the outdoor trail, which stays open until 5 PM. Challenges, duels and the boss happen here." },
+      { "time": "4:15 PM", "text": "Drive a few minutes to Historic 25th Street. Rest stop: Lene' Marie Chocolates." },
+      { "time": "5:00 PM", "text": "Walk the three blocks west toward Union Station as the sun sets at about 5:17 PM." },
+      { "time": "5:45 PM", "text": "Head home." },
+      { "time": "6:05 PM", "text": "Home. Check in with your trusted person, then reveal secrets and seal the entry." }
+    ]
+  },
+  "restStop": {
+    "name": "Lene' Marie Chocolates",
+    "address": "126 25th Street, Ogden, UT 84401",
+    "what": "A chocolate shop on Historic 25th Street, known for sweet treats and its homemade caramel.",
+    "hours": "Tuesday to Saturday, 10 AM to 7 PM, per Visit Ogden's directory. Phone (801) 690-0345.",
+    "backup": "Cold Stone Creamery and Rocky Mountain Chocolate Factory, 175 25th St, Suite 100, across the street. Ice cream, shakes and chocolates. Visit Ogden's listing gives no hours for it. Phone (385) 364-4172."
+  },
+  "skySpot": {
+    "kind": "Sunset stroll",
+    "name": "Historic 25th Street and Union Station",
+    "address": "25th Street from Washington Blvd to Wall Ave, Ogden",
+    "notes": "Three blocks of old storefronts that run downhill to Union Station at the west end, so you walk toward the sunset. This was once the notorious \"Two-Bit Street\" of the railroad era. It is a busy downtown street with open businesses, so it is fine to linger after dusk. No dark-sky stargazing here; the city is too bright."
+  },
+  "costs": {
+    "gas": "About $3. Roughly 20 miles round trip at the Sentra's 33 mpg combined, with Ogden's average at $4.24 a gallon on Nov 10.",
+    "food": "About $10 to $15 for chocolates or a treat each.",
+    "entry": "$24 ($12 each)",
+    "total": "About $37 to $42 for two",
+    "notes": "The food figure is my estimate. I could not find current prices for the chocolate shop."
+  },
+  "safety": {
+    "cell": "Everything on this quest is inside Ogden city limits, so normal service is expected and I know of no dead zones. I did not check your carrier's coverage map.",
+    "gas": "Maverik, 689 Washington Blvd, Ogden, a few minutes west of the park. The whole trip uses well under a gallon.",
+    "hospital": "McKay-Dee Hospital Emergency Room, 4401 Harrison Blvd, Ogden. Open 24 hours. 801-387-7000.",
+    "backBy": "6:30 PM",
+    "notes": "Stay on the park's paths and look at the sculptures without climbing on them. Both stops are a staffed attraction and a busy downtown street."
+  },
+  "modifiers": [
+    { "id": "budget", "name": "Budget run", "text": "Treats under $10 for the two of you. Tickets and gas don't count." },
+    { "id": "passenger-dj", "name": "Passenger's playlist only", "text": "Whoever isn't driving picks every song, both ways. The driver's hands stay on the wheel." },
+    { "id": "dress", "name": "Dress for the vibe", "text": "Arrive dressed as field paleontologists, safari guides, or tourists who took a very wrong turn." },
+    { "id": "guides", "name": "Unreliable tour guides", "text": "At each dinosaur, one of you gives a confident, completely made-up fact before anyone reads the sign. Take turns." },
+    { "id": "documentary", "name": "Nature documentary", "text": "For your first ten minutes on the trail, narrate each other in a hushed documentary voice." }
+  ],
+  "challenges": {
+    "coop": [
+      { "id": "c1", "title": "Apex photo", "text": "Take a team photo with the biggest dinosaur you can find, both of you in frame.", "stat": "charm" },
+      { "id": "c2", "title": "The movie stars", "text": "Find Baryonyx and Carnotaurus, the two species from the Jurassic World trailer.", "stat": "eye" },
+      { "id": "c3", "title": "Spirit dinosaur", "text": "Each of you picks the dinosaur that best matches the other, and explains why. Keep it kind.", "stat": "nerve" },
+      { "id": "c4", "title": "Uncharted sweets", "text": "At the rest stop, each try one thing you've never had. The homemade caramel counts.", "stat": "snack" }
+    ],
+    "duels": [
+      { "id": "d1", "title": "Name that dinosaur", "text": "At five sculptures, each of you guesses the name before reading the sign. Most right wins.", "stat": "eye" },
+      { "id": "d2", "title": "Best dinosaur photo", "text": "Each of you takes one photo of any dinosaur. Text both to your trusted person without saying whose is whose, and let them pick.", "stat": "charm" },
+      { "id": "d3", "title": "Park and street trivia", "text": "Three questions each, no looking things up. Signs in the park are fair game. Most right answers wins.", "stat": "nerve",
+        "trivia": [
+          { "q": "How many acres is the Dinosaur Park?", "a": "8.5 acres." },
+          { "q": "Roughly how many dinosaur sculptures fill the park?", "a": "More than one hundred." },
+          { "q": "In what month and year was the park founded?", "a": "April 1993." },
+          { "q": "Which two of the park's dinosaurs were in the Jurassic World trailer?", "a": "Baryonyx and Carnotaurus." },
+          { "q": "What was 25th Street's nickname in its rowdy railroad days?", "a": "\"Two-Bit Street.\"" },
+          { "q": "What number was 25th Street before it was renamed in 1889?", "a": "5th Street." }
+        ] }
+    ],
+    "secrets": [
+      "Get your partner to laugh out loud at a dinosaur.",
+      "Get your partner to do a dinosaur roar without asking them to.",
+      "Take a candid photo of your partner reading a sign, and don't let them notice until later.",
+      "Get your partner to pose like a T. rex for a photo without telling them it's your mission.",
+      "Hold your partner's hand at three different dinosaurs without it seeming planned.",
+      "Slip the word \"extinct\" into normal conversation three times before you get home.",
+      "While you're both at the counter, pay for one chocolate for your partner (under $5) before they notice.",
+      "Get your partner to name a dinosaur after someone you both know."
+    ],
+    "boss": {
+      "name": "The Six Realms",
+      "text": "Visit every named part of the park together before the indoor museums close at 4 PM. Tick each one when you're both standing in it. All six ticks beat the boss.",
+      "loot": "Tooth of the Tyrant (imaginary, since nothing leaves the park)",
+      "parts": [
+        "Dinosaur Sculptures and Outdoor Trail",
+        "Stewart Paleontology Museum",
+        "The Paleontology Lab",
+        "Gem and Mineral Museum",
+        "Ogden Natural History Museum",
+        "All Abilities Playground (finding it counts)"
+      ]
+    }
+  },
+  "achievement": { "name": "Walked Among Tyrants", "text": "Faced a hundred dinosaurs in Ogden and came home for chocolate." },
+  "unverified": [
+    "Exact drive distance and time. The 8 miles and 15 to 20 minutes are my estimate, so let your maps app confirm.",
+    "A current forecast for Ogden itself. I used the Salt Lake City forecast issued Nov 8.",
+    "Parking at the park, and prices at Lene' Marie Chocolates.",
+    "Cell coverage was not checked against a carrier map, and I did not confirm the Maverik's opening hours.",
+    "The map pin is placed from my estimate of the park's position."
+  ],
+  "safetyCheck": [
+    { "rule": 1, "note": "Every challenge, duel and secret objective is done side by side. None needs you apart, including the chocolate-counter secret." },
+    { "rule": 2, "note": "Not a remote spot. It is a staffed attraction inside Ogden, visited in daylight anyway." },
+    { "rule": 3, "note": "No night modifier is in this quest's pool. The one after-sunset stop is Historic 25th Street, a busy downtown street with open businesses." },
+    { "rule": 4, "note": "A ticketed public attraction, an open shop and a public downtown street. Nothing abandoned, private or closed." },
+    { "rule": 5, "note": "Paved city streets only, with a dry, mild forecast." },
+    { "rule": 6, "note": "Safety card included: cell, gas, hospital and a 6:30 PM back-by time." },
+    { "rule": 7, "note": "The app won't let you set out until you tick the location-share reminder, and asks for a home check-in at the end." },
+    { "rule": 8, "note": "The winter checklist must be ticked before setting out, even on a mild day." },
+    { "rule": 9, "note": "Veto and Bail buttons are always available. Both pay a reward and neither costs anything." }
+  ],
+  "sources": [
+    { "label": "Dinosaur Park: hours and closures", "url": "https://dinosaurpark.org/hours/" },
+    { "label": "Dinosaur Park: tickets", "url": "https://dinosaurpark.org/membership/ticket/" },
+    { "label": "Dinosaur Park: about", "url": "https://dinosaurpark.org/about/" },
+    { "label": "Visit Utah: Ogden Eccles Dinosaur Park", "url": "https://www.visitutah.com/articles/ogden-eccles-dinosaur-park" },
+    { "label": "Visit Ogden: Lene' Marie Chocolates", "url": "https://www.visitogden.com/directory/lene-marie-chocolates" },
+    { "label": "Visit Ogden: Cold Stone Creamery and Rocky Mountain Chocolate Factory", "url": "https://www.visitogden.com/directory/cold-stone-creamery-rocky-mountain-chocolate-factory/" },
+    { "label": "Visit Ogden: Historic 25th Street self-guided tour", "url": "https://www.visitogden.com/things-to-do/self-guided-tours/historic-25th-street/" },
+    { "label": "Wikipedia: Historic 25th Street", "url": "https://en.wikipedia.org/wiki/Historic_25th_Street" },
+    { "label": "McKay-Dee Hospital Emergency Room", "url": "https://intermountainhealthcare.org/locations/location-details/mckay-dee-hospital/mckay-dee-hospital/mckay-dee-hospital-emergency-room/" },
+    { "label": "Maverik, 689 Washington Blvd", "url": "https://locations.maverik.com/ut/ogden/689-washington-blvd" },
+    { "label": "National Weather Service forecast, Salt Lake City", "url": "https://forecast.weather.gov/MapClick.php?lat=40.7608&lon=-111.8910" },
+    { "label": "UDOT closure notice, Nov 5", "url": "https://www.einpresswire.com/article/954787116/udot-announces-lane-and-ramp-closures-in-davis-weber-utah-county" },
+    { "label": "Sunset times, Salt Lake City", "url": "https://sunrisesunset.io/us/utah/salt-lake-city/" },
+    { "label": "AAA gas prices, Utah", "url": "https://gasprices.aaa.com/?state=UT" },
+    { "label": "2022 Nissan Sentra fuel economy", "url": "https://mpgbuddy.com/cars/nissan/sentra/2022" }
+  ]
+}

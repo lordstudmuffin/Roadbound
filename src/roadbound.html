@@ -1,0 +1,699 @@
+<title>Roadbound Quest Log</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Caveat:wght@500;700&display=swap">
+<style>
+/* Layout: one bound journal column; a ribbon of four tabs pinned to the bottom edge like page markers. */
+:root{
+  --paper:#ece2cb; --page:#f6efdd; --ink:#2a231a; --faded:#6d604c; --rule:#cdbf9f;
+  --pine:#2f4b3b; --brass:#946a1f; --oxblood:#7c2f2a; --lake:#a9c0c0; --wash:#e3d7ba;
+  --display:"IM Fell English","Iowan Old Style",Georgia,serif;
+  --body:"Alegreya",Georgia,"Times New Roman",serif;
+  --hand:"Caveat","Segoe Print","Bradley Hand",cursive;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#191511; --page:#262019; --ink:#eadfc6; --faded:#a99b80; --rule:#4a3f30;
+  --pine:#93b8a0; --brass:#d6a655; --oxblood:#e0958a; --lake:#35504f; --wash:#31291f; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --paper:#191511; --page:#262019; --ink:#eadfc6; --faded:#a99b80; --rule:#4a3f30;
+  --pine:#93b8a0; --brass:#d6a655; --oxblood:#e0958a; --lake:#35504f; --wash:#31291f; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5;
+  background-image:radial-gradient(circle at 20% 0%,var(--wash),transparent 60%)}
+.wrap{max-width:720px;margin:0 auto;padding-block:14px 110px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;gap:16px}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance;line-height:1.15}
+h1{font-size:1.9rem} h2{font-size:1.45rem} h3{font-size:1.15rem}
+p{margin:0}
+a{color:var(--pine)}
+.mast{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:3px double var(--rule);padding-bottom:10px}
+.mast small{font-family:var(--hand);font-size:1.15rem;color:var(--brass)}
+.note{font-family:var(--hand);font-size:1.25rem;line-height:1.25;color:var(--pine)}
+.faded{color:var(--faded)} .small{font-size:.9rem}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);font-weight:700}
+.page{background:var(--page);border:1px solid var(--rule);border-radius:3px;padding:16px;display:flex;flex-direction:column;gap:12px;
+  box-shadow:0 1px 0 var(--rule),0 2px 0 var(--page),0 3px 0 var(--rule)}
+.stack{display:flex;flex-direction:column;gap:10px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.row>*{min-width:0}
+.grow{flex:1 1 180px;min-width:0}
+.rule{border:0;border-top:1px dashed var(--rule);margin:2px 0}
+dl.facts{display:grid;grid-template-columns:minmax(84px,auto) 1fr;gap:6px 12px;margin:0}
+dl.facts dt{color:var(--faded);font-size:.9rem;padding-top:2px} dl.facts dd{margin:0;min-width:0;overflow-wrap:anywhere}
+button{font:inherit;color:inherit;cursor:pointer}
+.btn{background:var(--pine);color:var(--page);border:1px solid var(--pine);border-radius:3px;padding:10px 16px;font-family:var(--display);font-size:1.08rem}
+.btn.ghost{background:transparent;color:var(--pine)}
+.btn.warn{background:transparent;color:var(--oxblood);border-color:var(--oxblood)}
+.btn.sm{padding:6px 10px;font-size:.95rem}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+input[type=text],input[type=number],textarea,select{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:3px;padding:8px 10px;width:100%;min-width:0}
+textarea{min-height:150px;line-height:1.45}
+label.tick{display:flex;gap:10px;align-items:flex-start;padding:6px 0;cursor:pointer}
+label.tick input{width:22px;height:22px;flex:none;margin-top:2px;accent-color:var(--pine)}
+.chip{display:inline-block;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;font-size:.85rem;color:var(--faded);white-space:nowrap}
+.chip.ok{color:var(--pine);border-color:var(--pine)} .chip.bad{color:var(--oxblood);border-color:var(--oxblood)} .chip.gold{color:var(--brass);border-color:var(--brass)}
+.stamp{font-family:var(--display);font-style:italic;color:var(--oxblood);border:2px solid var(--oxblood);border-radius:4px;padding:2px 10px;transform:rotate(-3deg);display:inline-block;align-self:flex-start}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{border:1px solid var(--rule);background:transparent;border-radius:3px;padding:6px 10px;font-size:.95rem}
+.seg button[aria-pressed=true]{background:var(--pine);color:var(--page);border-color:var(--pine)}
+.chal{border-left:3px solid var(--rule);padding:2px 0 2px 12px;display:flex;flex-direction:column;gap:6px}
+.chal.boss{border-left-color:var(--oxblood)} .chal.done{border-left-color:var(--pine)}
+.secret{background:var(--wash);border:1px dashed var(--brass);border-radius:3px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.banner{border:1px solid var(--oxblood);color:var(--oxblood);border-radius:3px;padding:10px 12px;background:var(--page)}
+.safety{border:2px solid var(--pine);border-radius:3px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.bar{height:8px;background:var(--wash);border:1px solid var(--rule);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--brass)}
+.seal{width:46px;height:46px;border-radius:50%;background:var(--oxblood);color:var(--page);display:grid;place-items:center;font-family:var(--display);font-size:1.5rem;flex:none}
+.stat{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center}
+.pips{display:flex;gap:6px;align-items:center;font-variant-numeric:tabular-nums}
+.pips button{width:30px;height:30px;border:1px solid var(--rule);background:transparent;border-radius:50%;line-height:1}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+.photos figure{margin:0;background:var(--paper);border:1px solid var(--rule);padding:5px 5px 2px;display:flex;flex-direction:column;gap:2px}
+.photos img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.photos figcaption{font-family:var(--hand);font-size:1rem;display:flex;justify-content:space-between;gap:6px}
+.photos figcaption button{border:0;background:none;color:var(--oxblood);font-size:.8rem;font-family:var(--body);padding:0}
+.story{font-family:var(--display);font-size:1.1rem;white-space:pre-wrap;line-height:1.45}
+.mapbox{background:var(--page);border:1px solid var(--rule);border-radius:3px;padding:6px}
+.mapbox svg{width:100%;height:auto;display:block}
+.entry summary{cursor:pointer;list-style:none;display:flex;gap:12px;align-items:center}
+.entry summary::-webkit-details-marker{display:none}
+.entry summary img{width:56px;height:56px;object-fit:cover;border:1px solid var(--rule);flex:none}
+.entry[open] summary{margin-bottom:10px}
+ul.plain{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:4px}
+ol.plan{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+ol.plan li{display:grid;grid-template-columns:74px 1fr;gap:10px}
+ol.plan time{font-variant-numeric:tabular-nums;color:var(--brass);font-weight:700}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--page);border-top:3px double var(--rule);
+  display:flex;justify-content:center;
+  padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px))}
+nav.tabs button{flex:1 1 0;max-width:180px;border:0;background:none;padding:12px 4px 10px;font-family:var(--display);font-size:1.05rem;color:var(--faded);border-top:3px solid transparent;margin-top:-3px}
+nav.tabs button[aria-current=page]{color:var(--pine);border-top-color:var(--pine)}
+@media (prefers-reduced-motion:no-preference){ .pulse{animation:pulse 2.4s ease-in-out infinite} }
+@keyframes pulse{50%{opacity:.35}}
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <h1>Roadbound Quest Log</h1>
+    <small id="mastNote">two adventurers, one Sentra</small>
+  </header>
+  <div id="alerts" class="stack"></div>
+  <main id="view" class="stack" style="gap:16px">
+    <section class="page"><p class="note">Opening the journal…</p><p class="faded">Your party, quests and scrapbook will appear here once the shared log answers.</p></section>
+  </main>
+</div>
+<nav class="tabs" aria-label="Journal sections">
+  <button data-tab="quest">Quest</button>
+  <button data-tab="party">Party</button>
+  <button data-tab="scrapbook">Scrapbook</button>
+  <button data-tab="camp">Camp</button>
+</nav>
+
+<script>
+(function(){
+"use strict";
+/* ---------- fixed game data ---------- */
+var STATS=[["nav","Navigation"],["charm","Charm"],["nerve","Nerve"],["eye","Eagle Eye"],["snack","Snack Sense"]];
+var CLASSES={
+  pathfinder:{n:"Pathfinder",b:{nav:2},t:"Never lost, only scouting."},
+  bard:{n:"Road Bard",b:{charm:2},t:"Keeper of the playlist and the running bit."},
+  daredevil:{n:"Daredevil",b:{nerve:2},t:"Orders the strangest thing on the menu first."},
+  scout:{n:"Hawk-eyed Scout",b:{eye:2},t:"Spots the hidden detail from the parking lot."},
+  sage:{n:"Snack Sage",b:{snack:2},t:"Knows where the good dessert is. Always."},
+  chronicler:{n:"Chronicler",b:{eye:1,charm:1},t:"If there's no photo, it didn't happen."}
+};
+var START_POINTS=6;
+var LEVEL_TITLES=["Fresh Boots","Sunday Driver","Backroad Regular","Seasoned Wayfarer","Wasatch Wanderer","Keeper of Odd Places","Legend of the Interstate"];
+var PARTY_TITLES=["Strangers at the Trailhead","The Two-Seat Fellowship","Backroad Regulars","Wardens of the Weird","Legends of I-15"];
+var LOOT=["Brass Compass of Mild Confidence","Thermos of Holding","Gas Station Sunglasses of Truth","The Map Nobody Can Refold","Lucky Ice Scraper","Aux Cord of Command","Mitten of Left-Hand Warmth","Receipt of Unknown Origin","Bottomless Bag of Road Snacks","Blanket of +2 Cozy","Flashlight of Dramatic Storytelling","Charger of Last Resort","Souvenir Penny, Slightly Squashed","Scarf of Wind Resistance","Travel Mug of Second Wind","Postcard From a Place You Just Left"];
+var WINTER=[["gas","Full gas tank"],["blankets","Blankets"],["water","Water"],["snacks","Snacks"],["charger","Phone charger"],["flashlight","Flashlight"],["scraper","Ice scraper"]];
+var OATH=[
+ "We always travel together in one car and never split up. Duels happen side by side.",
+ "Remote or isolated spots are daylight-only, and we are back on main roads before dark.",
+ "Night quests happen only in busy, well-lit public places.",
+ "No abandoned buildings, private property, closed areas or anything that could be trespassing.",
+ "Only paved or well-maintained roads a Sentra can handle, checked against current winter conditions.",
+ "Every quest carries a safety card: cell coverage, nearest gas, nearest hospital and when we'll be back.",
+ "Before each trip we share our location with a trusted person, and we check in when we're home.",
+ "Winter checklist before every trip: gas, blankets, water, snacks, charger, flashlight, ice scraper.",
+ "Either of us can veto a quest or bail at any time. No penalty. Bailing earns a reward."
+];
+var FINAL={done:1,vetoed:1,bailed:1};
+
+/* ---------- state ---------- */
+var S={db:null,sample:null,loaded:{party:false,quests:false,runs:false},slow:false,dead:false,readOnly:false,err:"",
+  party:null,quests:[],runs:{},tab:lsGet("rq.tab")||"quest",who:lsGet("rq.who")||"",qid:null,
+  draft:null,peek:{},confirm:"",photos:{},photoBusy:false,storyBusy:false,storyErr:"",mem:{},openEntry:null,triv:{}};
+
+function lsGet(k){try{return window.localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{window.localStorage.setItem(k,v)}catch(e){} }
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function safeUrl(u){return /^https:\/\//i.test(String(u||""))?String(u):""}
+function $(id){return document.getElementById(id)}
+function pname(pid){var p=S.party&&S.party[pid];return (p&&p.name)||(pid==="p1"?"Player one":"Player two")}
+function other(pid){return pid==="p1"?"p2":"p1"}
+function mine(){return S.who==="both"?["p1","p2"]:(S.who==="p1"||S.who==="p2")?[S.who]:[]}
+
+/* ---------- levels ---------- */
+function levelOf(xp){var n=1;while(xp>=50*n*(n+1))n++;return n}
+function floorOf(n){return n<=1?0:50*(n-1)*n}
+function statOf(p,k){var base=1+((p.stats&&p.stats[k])||0);var b=(CLASSES[p.cls]||{b:{}}).b[k]||0;return base+b}
+function spent(p){var t=0;STATS.forEach(function(s){t+=(p.stats&&p.stats[s[0]])||0});return t}
+
+/* ---------- rewards ---------- */
+function computeRewards(q,run){
+  var out={p1:{xp:0,gold:0,lines:[]},p2:{xp:0,gold:0,lines:[]}};
+  function add(pid,xp,gold,why){out[pid].xp+=xp;out[pid].gold+=gold;out[pid].lines.push(why+" +"+xp+" XP"+(gold?", +"+gold+" gold":""))}
+  var ch=q.challenges||{};
+  ["p1","p2"].forEach(function(pid){
+    var p=(S.party&&S.party[pid])||{};
+    add(pid,30,0,"Quest completed");
+    (ch.coop||[]).forEach(function(c){ if(run.coop&&run.coop[c.id]){ add(pid,15+(c.stat?statOf(p,c.stat):0),5,"Co-op: "+c.title) } });
+    (ch.duels||[]).forEach(function(d){ var w=run.duels&&run.duels[d.id]; if(!w)return;
+      if(w==="tie")add(pid,12,5,"Duel tied: "+d.title);
+      else if(w===pid)add(pid,20+(d.stat?statOf(p,d.stat):0),10,"Duel won: "+d.title);
+      else add(pid,5,0,"Duel fought: "+d.title); });
+    var r=run.reveals&&run.reveals[pid];
+    if(r){ if(r.ok)add(pid,25,10,"Secret objective pulled off"); else add(pid,5,0,"Secret objective attempted"); }
+    if(run.boss==="win")add(pid,50,20,"Boss beaten: "+((ch.boss||{}).name||"the boss"));
+    else if(run.boss==="loss")add(pid,15,0,"Faced the boss");
+    if(run.modOk==="yes")add(pid,15,0,"Kept to the modifier");
+    if(run.checkin)add(pid,5,0,"Checked in safe at home");
+  });
+  return out;
+}
+function totals(){
+  var t={p1:{xp:0,gold:0,loot:[],titles:[]},p2:{xp:0,gold:0,loot:[],titles:[]}};
+  Object.keys(S.runs).forEach(function(k){var r=S.runs[k].rewards;if(!r)return;
+    ["p1","p2"].forEach(function(pid){var x=r[pid]||{};t[pid].xp+=x.xp||0;t[pid].gold+=x.gold||0;
+      (x.loot||[]).forEach(function(l){t[pid].loot.push(l)});(x.titles||[]).forEach(function(l){t[pid].titles.push(l)});});});
+  return t;
+}
+function achievements(){
+  var runs=Object.keys(S.runs).map(function(k){return S.runs[k]});
+  var done=runs.filter(function(r){return r.status==="done"}),a=[];
+  function has(n,t){a.push({n:n,t:t})}
+  if(done.length>=1)has("First Quest Together","Finished your first quest as a party.");
+  [3,5,10,20].forEach(function(n){if(done.length>=n)has(n+" Quests Together","Finished "+n+" quests side by side.")});
+  if(done.some(function(r){return r.boss==="win"}))has("Boss Slayers","Beat a location boss as a team.");
+  if(runs.some(function(r){return r.status==="bailed"}))has("Lived to Quest Another Day","Bailed when it was the smart call.");
+  if(runs.some(function(r){return r.status==="vetoed"}))has("Wise Counsel","Used a veto. The party is better for it.");
+  if(done.some(function(r){return r.reveals&&((r.reveals.p1&&r.reveals.p1.ok)||(r.reveals.p2&&r.reveals.p2.ok))}))has("Secret Agent","Pulled off a secret objective.");
+  if(done.some(function(r){return r.reveals&&r.reveals.p1&&r.reveals.p1.ok&&r.reveals.p2&&r.reveals.p2.ok}))has("Double Agents","Both secret objectives pulled off on the same quest.");
+  if(done.some(function(r){return r.modOk==="yes"}))has("By the Rules of the Road","Finished a quest while keeping to its modifier.");
+  var w1=0,w2=0;done.forEach(function(r){Object.keys(r.duels||{}).forEach(function(k){if(r.duels[k]==="p1")w1++;if(r.duels[k]==="p2")w2++})});
+  if(w1&&w2)has("Friendly Rivalry","Each of you has won a duel.");
+  if(done.some(function(r){return (r.photoCount||0)>=5}))has("Photo Finish","Five photos or more from one trip.");
+  done.forEach(function(r){var q=questById(r.q);if(q&&q.achievement&&q.achievement.name)has(q.achievement.name,q.achievement.text||"")});
+  return a;
+}
+function questById(id){for(var i=0;i<S.quests.length;i++)if(S.quests[i].id===id)return S.quests[i];return null}
+
+/* ---------- writes ---------- */
+var chains={};
+function write(key,fn){
+  chains[key]=(chains[key]||Promise.resolve()).then(fn).catch(function(e){
+    if(e&&e.code==="invalid_argument"){S.readOnly=true}
+    else S.err="That change didn't save. Check your connection and try again.";
+    render();
+  });
+  return chains[key];
+}
+function runPatch(qid,patch){
+  if(!S.db)return Promise.resolve();
+  return write("runs/"+qid,function(){var ref=S.db.doc("runs/"+qid);
+    if(S.runs[qid])return ref.update(patch);
+    var body={q:qid};for(var k in patch)body[k]=patch[k];return ref.set(body)});
+}
+function partySet(body){ if(!S.db)return; return write("party",function(){return S.db.doc("party/main").set(body)}) }
+function partyPatch(patch){ if(!S.db)return; return write("party",function(){return S.db.doc("party/main").update(patch)}) }
+
+/* ---------- secrets (kept on this phone only until revealed) ---------- */
+function secretIndex(q,pid){
+  var pool=((q.challenges||{}).secrets)||[];if(!pool.length)return -1;
+  var key="rq.secret."+q.id+"."+pid,v=lsGet(key);if(v==null)v=S.mem[key];
+  if(v!=null&&pool[+v])return +v;
+  var mineIdx=[];for(var i=0;i<pool.length;i++){if((i%2===0)===(pid==="p1"))mineIdx.push(i)}
+  if(!mineIdx.length)mineIdx=[0];
+  var pick=mineIdx[Math.floor(Math.random()*mineIdx.length)];
+  lsSet(key,String(pick));S.mem[key]=String(pick);return pick;
+}
+
+/* ---------- boot ---------- */
+function boot(){
+  var slowT=setTimeout(function(){S.slow=true;render()},10000);
+  function got(k){S.loaded[k]=true;if(S.loaded.party&&S.loaded.quests&&S.loaded.runs){clearTimeout(slowT);S.slow=false}scheduleRender()}
+  function fail(){clearTimeout(slowT);S.dead=true;render()}
+  if(!window.claude||!window.claude.use){S.dead=true;render();return}
+  window.claude.use("db").then(function(db){
+    if(!db){S.dead=true;clearTimeout(slowT);render();return}
+    S.db=db;
+    db.doc("party/main").onSnapshot(function(s){S.party=s.exists?s.data():null;got("party")},fail);
+    db.collection("quests").onSnapshot(function(s){S.quests=s.docs.map(function(d){var x=Object.assign({},d.data());x.id=d.id;return x})
+      .sort(function(a,b){return (b.number||0)-(a.number||0)});got("quests")},fail);
+    db.collection("runs").onSnapshot(function(s){var m={};s.docs.forEach(function(d){m[d.id]=d.data()});S.runs=m;got("runs")},fail);
+  });
+  window.claude.use("sample").then(function(f){S.sample=f||null});
+}
+var pending=false;
+function scheduleRender(){
+  var a=document.activeElement;
+  if(a&&(a.tagName==="TEXTAREA"||(a.tagName==="INPUT"&&(a.type==="text"||a.type==="number")))&&$("view").contains(a)){pending=true;return}
+  render();
+}
+document.addEventListener("focusout",function(){if(pending){pending=false;setTimeout(scheduleRender,0)}});
+
+/* ---------- render ---------- */
+function render(){
+  var tabs=document.querySelectorAll("nav.tabs button");
+  for(var i=0;i<tabs.length;i++){if(tabs[i].dataset.tab===S.tab)tabs[i].setAttribute("aria-current","page");else tabs[i].removeAttribute("aria-current")}
+  var al="";
+  if(S.dead)al+='<div class="banner"><strong>The shared log can\'t be reached from here.</strong> Open this page from its claude.ai link while signed in. Nothing on this page can be saved until then.</div>';
+  else if(S.slow)al+='<div class="banner">Still trying to reach the shared log. What you see may be out of date.</div>';
+  if(S.readOnly)al+='<div class="banner"><strong>This phone can read the log but can\'t write to it.</strong> Mark challenges and reveals on the other phone. See Camp for how to fix it.</div>';
+  if(S.err)al+='<div class="banner">'+esc(S.err)+' <button class="btn sm ghost" data-act="clearErr">Dismiss</button></div>';
+  $("alerts").innerHTML=al;
+  var t=totals(),plv=levelOf(Math.floor((t.p1.xp+t.p2.xp)/2));
+  $("mastNote").textContent=S.party?("Party level "+plv+" · "+PARTY_TITLES[Math.min(plv-1,PARTY_TITLES.length-1)]):"two adventurers, one Sentra";
+  var allLoaded=S.loaded.party&&S.loaded.quests&&S.loaded.runs,h;
+  if(!allLoaded&&!S.dead&&S.tab!=="camp")h='<section class="page"><p class="note">Opening the journal…</p><p class="faded">Your party, quests and scrapbook will appear here once the shared log answers.</p></section>';
+  else if(S.tab==="party")h=viewParty();
+  else if(S.tab==="scrapbook")h=viewScrapbook();
+  else if(S.tab==="camp")h=viewCamp();
+  else h=viewQuest();
+  $("view").innerHTML=h;
+}
+
+/* ----- who holds this phone ----- */
+function whoPicker(){
+  return '<div class="stack"><p class="eyebrow">Who is holding this phone?</p><div class="seg">'+
+   [["p1",pname("p1")],["p2",pname("p2")],["both","Both of us (we pass one phone)"]].map(function(o){
+     return '<button data-act="who" data-v="'+o[0]+'" aria-pressed="'+(S.who===o[0])+'">'+esc(o[1])+'</button>'}).join("")+
+   '</div><p class="small faded">This decides whose secret objective this phone shows. It is remembered on this phone only.</p></div>';
+}
+
+/* ----- QUEST ----- */
+function currentQuest(){
+  if(S.qid){var q=questById(S.qid);if(q)return q}
+  for(var i=0;i<S.quests.length;i++){var r=S.runs[S.quests[i].id];if(!r||!FINAL[r.status])return S.quests[i]}
+  return S.quests[0]||null;
+}
+function viewQuest(){
+  if(!S.quests.length)return '<section class="page"><h2>No quest on the board yet</h2><p>A new quest is posted here each Friday. Each one is a real place, checked for hours, cost, roads and season before it reaches you.</p><p class="note">Until then: roll your characters on the Party page.</p></section>';
+  var q=currentQuest(),run=S.runs[q.id]||{},st=run.status||"briefing",h="";
+  if(!S.party)h+='<section class="page"><p class="note">You haven\'t rolled characters yet.</p><p>You can read the quest now, but make your two adventurers on the Party page before you set out so the XP has somewhere to go.</p><div><button class="btn sm" data-tab="party">Create our characters</button></div></section>';
+  h+=questHeader(q,run,st);
+  if(st==="briefing")h+=briefing(q,run);
+  else if(st==="accepted")h+=preflight(q,run);
+  else if(st==="out")h+=onTheRoad(q,run);
+  else if(st==="home")h+=homeAgain(q,run);
+  else h+=closedQuest(q,run);
+  if(S.quests.length>1)h+='<section class="page"><p class="eyebrow">Quest board</p><div class="stack">'+S.quests.map(function(x){var r=S.runs[x.id]||{};
+    return '<div class="row"><span class="grow">No. '+esc(x.number)+' · '+esc(x.title)+'</span><span class="chip">'+esc(statusWord(r.status))+'</span>'+(x.id===q.id?'':'<button class="btn sm ghost" data-act="open" data-q="'+esc(x.id)+'">Open</button>')+'</div>'}).join("")+'</div></section>';
+  return h;
+}
+function statusWord(s){return{accepted:"packing",out:"on the road",home:"home, wrapping up",done:"conquered",vetoed:"vetoed",bailed:"bailed"}[s]||"waiting"}
+function questHeader(q,run,st){
+  var p=q.place||{},d=q.drive||{};
+  var h='<section class="page"><div class="row" style="justify-content:space-between"><p class="eyebrow">Quest No. '+esc(q.number)+(q.season?' · Season '+esc(q.season):'')+'</p><span class="chip">'+esc(statusWord(st))+'</span></div>'+
+   '<h2>'+esc(q.title)+'</h2>'+(q.tagline?'<p class="note">'+esc(q.tagline)+'</p>':'')+
+   '<p>'+esc(q.why)+'</p>'+
+   '<dl class="facts"><dt>Where</dt><dd><strong>'+esc(p.name)+'</strong><br>'+esc(p.address)+'</dd>'+
+   '<dt>Hours</dt><dd>'+esc(p.hours)+'</dd><dt>Cost</dt><dd>'+esc(p.cost)+'</dd>'+
+   (p.parking?'<dt>Parking</dt><dd>'+esc(p.parking)+'</dd>':'')+
+   '<dt>The drive</dt><dd>'+esc(d.summary)+'</dd>'+
+   (q.bestDays?'<dt>Go on</dt><dd>'+esc(q.bestDays)+'</dd>':'')+'</dl>';
+  if(run.modifier)h+='<div class="secret"><p class="eyebrow">This week\'s modifier</p><p><strong>'+esc(run.modifier.name)+'.</strong> '+esc(run.modifier.text)+'</p></div>';
+  return h+'</section>';
+}
+function conditions(q){
+  var c=q.conditions||{};
+  return '<section class="page"><p class="eyebrow">Season and roads · checked '+esc(c.checked)+'</p><dl class="facts">'+
+   '<dt>Forecast</dt><dd>'+esc(c.forecast)+'</dd><dt>Roads</dt><dd>'+esc(c.roads)+'</dd><dt>Sunset</dt><dd>'+esc(c.sunset)+'</dd>'+
+   '<dt>Sentra</dt><dd>'+esc(c.car)+'</dd></dl>'+
+   (q.unverified&&q.unverified.length?'<p class="eyebrow" style="color:var(--oxblood)">Could not confirm</p><ul class="plain">'+q.unverified.map(function(u){return '<li>'+esc(u)+'</li>'}).join("")+'</ul>':'')+
+   '<p class="small faded">Conditions change. Look at the forecast and the UDOT Traffic app again on the morning you go.</p></section>';
+}
+function planBlock(q){
+  var pl=q.plan||{},rs=q.restStop,sk=q.skySpot,co=q.costs||{};
+  var h='<section class="page"><p class="eyebrow">The plan</p><ol class="plan">'+(pl.steps||[]).map(function(s){return '<li><time>'+esc(s.time)+'</time><span>'+esc(s.text)+'</span></li>'}).join("")+'</ol>';
+  if(rs)h+='<hr class="rule"><p class="eyebrow">Rest stop</p><p><strong>'+esc(rs.name)+'</strong> · '+esc(rs.address)+'</p><p>'+esc(rs.what)+'</p><p class="small faded">'+esc(rs.hours)+'</p>'+(rs.backup?'<p class="small"><strong>Backup:</strong> '+esc(rs.backup)+'</p>':'');
+  if(sk)h+='<hr class="rule"><p class="eyebrow">'+esc(sk.kind||"Sunset spot")+'</p><p><strong>'+esc(sk.name)+'</strong> · '+esc(sk.address)+'</p><p>'+esc(sk.notes)+'</p>';
+  h+='<hr class="rule"><p class="eyebrow">Cost for two</p><dl class="facts"><dt>Gas</dt><dd>'+esc(co.gas)+'</dd><dt>Food</dt><dd>'+esc(co.food)+'</dd><dt>Entry</dt><dd>'+esc(co.entry)+'</dd><dt>Total</dt><dd><strong>'+esc(co.total)+'</strong></dd></dl>'+(co.notes?'<p class="small faded">'+esc(co.notes)+'</p>':'');
+  return h+'</section>';
+}
+function safetyCard(q){
+  var s=q.safety||{};
+  return '<section class="page"><div class="safety"><p class="eyebrow" style="color:var(--pine)">Safety card</p><dl class="facts">'+
+   '<dt>Cell signal</dt><dd>'+esc(s.cell)+'</dd><dt>Nearest gas</dt><dd>'+esc(s.gas)+'</dd><dt>Nearest hospital</dt><dd>'+esc(s.hospital)+'</dd><dt>Back by</dt><dd><strong>'+esc(s.backBy)+'</strong></dd></dl>'+
+   (s.notes?'<p class="small">'+esc(s.notes)+'</p>':'')+'</div></section>';
+}
+function sourcesBlock(q){
+  var src=(q.sources||[]).filter(function(s){return safeUrl(s.url)});
+  var h='<section class="page"><details><summary class="eyebrow" style="cursor:pointer">Where these facts came from</summary><ul class="plain" style="margin-top:8px">'+
+    src.map(function(s){return '<li><a href="'+esc(safeUrl(s.url))+'" target="_blank" rel="noopener">'+esc(s.label)+'</a></li>'}).join("")+'</ul>';
+  if(q.safetyCheck&&q.safetyCheck.length)h+='<p class="eyebrow" style="margin-top:12px">Checked against the nine safety rules</p><ul class="plain">'+q.safetyCheck.map(function(c){return '<li><strong>Rule '+esc(c.rule)+':</strong> '+esc(c.note)+'</li>'}).join("")+'</ul>';
+  return h+'</details></section>';
+}
+function challengePreview(q){
+  var ch=q.challenges||{};
+  return '<section class="page"><p class="eyebrow">What awaits</p><ul class="plain">'+
+   '<li>'+(ch.coop||[]).length+' co-op challenges to do together</li><li>'+(ch.duels||[]).length+' duels, fought side by side</li>'+
+   '<li>A secret objective for each of you, hidden until the end</li><li>The boss: <strong>'+esc((ch.boss||{}).name)+'</strong></li></ul></section>';
+}
+function confirmBox(id,text,yes,act){
+  if(S.confirm!==id)return "";
+  return '<div class="secret"><p>'+esc(text)+'</p><div class="row"><button class="btn sm warn" data-act="'+act+'">'+esc(yes)+'</button><button class="btn sm ghost" data-act="cancel">Never mind</button></div></div>';
+}
+function briefing(q,run){
+  return conditions(q)+planBlock(q)+safetyCard(q)+challengePreview(q)+
+   '<section class="page"><p>Accepting rolls this week\'s random modifier. Either of you can veto instead. A veto costs nothing and earns a little XP for good judgment.</p>'+
+   '<div class="row"><button class="btn" data-act="accept">Accept the quest</button><button class="btn warn" data-act="ask" data-v="veto">Veto</button></div>'+
+   confirmBox("veto","Veto this quest? No penalty. A new one arrives Friday.","Yes, veto it","veto")+'</section>'+sourcesBlock(q);
+}
+function tick(act,key,on,label,extra){return '<label class="tick"><input type="checkbox" data-act="'+act+'" data-k="'+esc(key)+'" '+(on?"checked":"")+'><span>'+label+(extra||"")+'</span></label>'}
+function preflight(q,run){
+  var pre=run.pre||{},all=pre.share&&pre.oneCar&&WINTER.every(function(w){return pre[w[0]]});
+  return '<section class="page"><p class="eyebrow">Before you leave the driveway</p>'+
+   tick("pre","share",pre.share,"<strong>We've shared our live location with a trusted person</strong> and told them we'll be back by "+esc((q.safety||{}).backBy)+".")+
+   tick("pre","oneCar",pre.oneCar,"<strong>One car, together the whole way.</strong> Nobody splits up, even for a minute.")+
+   '<hr class="rule"><p class="eyebrow">Winter checklist</p>'+WINTER.map(function(w){return tick("pre",w[0],pre[w[0]],esc(w[1]))}).join("")+
+   '<div class="row"><button class="btn" data-act="setOut" '+(all?"":"disabled")+'>Set out</button>'+(all?'':'<span class="small faded">Tick everything to unlock the road.</span>')+'</div></section>'+
+   conditions(q)+planBlock(q)+safetyCard(q)+
+   '<section class="page"><div class="row"><button class="btn warn sm" data-act="ask" data-v="veto">Veto after all</button></div>'+confirmBox("veto","Veto this quest? No penalty.","Yes, veto it","veto")+'</section>';
+}
+function secretCards(q){
+  var pool=((q.challenges||{}).secrets)||[];if(!pool.length)return "";
+  var ids=mine();if(!ids.length)return '<section class="page">'+whoPicker()+'</section>';
+  return '<section class="page"><p class="eyebrow">Secret objectives</p>'+ids.map(function(pid){
+    var i=secretIndex(q,pid),open=S.peek[pid];
+    return '<div class="secret"><p><strong>For '+esc(pname(pid))+'\'s eyes only.</strong></p>'+
+     (open?'<p class="note">'+esc(pool[i])+'</p><p class="small faded">Do it with your partner right beside you. Never go off alone for it.</p>':'<p class="faded">Hidden. Make sure '+esc(pname(other(pid)))+' isn\'t looking.</p>')+
+     '<div><button class="btn sm ghost" data-act="peek" data-v="'+pid+'">'+(open?"Hide it":"Peek")+'</button></div></div>'}).join("")+
+   '<p class="small faded">Your secret lives on this phone only. It reaches the shared log when you reveal it at home.</p></section>';
+}
+function winnerSeg(act,id,val){
+  return '<div class="seg">'+[["p1",pname("p1")],["p2",pname("p2")],["tie","Tie"]].map(function(o){
+    return '<button data-act="'+act+'" data-k="'+esc(id)+'" data-v="'+o[0]+'" aria-pressed="'+(val===o[0])+'">'+esc(o[1])+'</button>'}).join("")+'</div>';
+}
+function challengeBlocks(q,run){
+  var ch=q.challenges||{},b=ch.boss||{},h='<section class="page"><p class="eyebrow">Co-op · do these together</p>';
+  h+=(ch.coop||[]).map(function(c){var on=run.coop&&run.coop[c.id];
+    return '<div class="chal '+(on?"done":"")+'">'+tick("coop",c.id,on,"<strong>"+esc(c.title)+".</strong> "+esc(c.text))+'</div>'}).join("");
+  h+='</section><section class="page"><p class="eyebrow">Duels · side by side, winner takes the points</p>';
+  h+=(ch.duels||[]).map(function(d){var w=run.duels&&run.duels[d.id];
+    var tv=d.trivia?'<details><summary class="small" style="cursor:pointer">Trivia questions (one of you reads, the other answers, then swap)</summary><ol class="plain" style="margin-top:6px">'+d.trivia.map(function(t,i){var k=d.id+":"+i;
+      return '<li>'+esc(t.q)+' '+(S.triv[k]?'<strong>'+esc(t.a)+'</strong>':'<button class="btn sm ghost" data-act="triv" data-k="'+esc(k)+'">Show answer</button>')+'</li>'}).join("")+'</ol></details>':'';
+    return '<div class="chal '+(w?"done":"")+'"><p><strong>'+esc(d.title)+'.</strong> '+esc(d.text)+'</p>'+tv+winnerSeg("duel",d.id,w)+'</div>'}).join("");
+  h+='</section>'+secretCards(q)+'<section class="page"><p class="eyebrow" style="color:var(--oxblood)">Boss</p><div class="chal boss"><h3>'+esc(b.name)+'</h3><p>'+esc(b.text)+'</p>';
+  if(b.parts&&b.parts.length){var n=0;h+=b.parts.map(function(p,i){var on=run.bossParts&&run.bossParts["i"+i];if(on)n++;return tick("bossPart","i"+i,on,esc(p))}).join("");
+    h+='<p class="small faded">'+n+' of '+b.parts.length+' found</p>'}
+  h+='<div class="seg"><button data-act="boss" data-v="win" aria-pressed="'+(run.boss==="win")+'">We beat it</button><button data-act="boss" data-v="loss" aria-pressed="'+(run.boss==="loss")+'">It got us this time</button></div></div></section>';
+  return h;
+}
+function bailBlock(){
+  return '<section class="page"><p>Something feels off, the weather turned, or you\'re just done? Bail. It always counts as a win for good sense, and it pays out.</p><div><button class="btn warn" data-act="ask" data-v="bail">Bail out</button></div>'+
+   confirmBox("bail","Bail on this quest and head home? You both earn XP, gold and a keepsake for making the call.","Yes, we're bailing","bail")+'</section>';
+}
+function onTheRoad(q,run){
+  return planBlock(q)+challengeBlocks(q,run)+safetyCard(q)+
+   '<section class="page"><p>Back in the driveway?</p><div><button class="btn" data-act="home">We\'re home</button></div></section>'+bailBlock();
+}
+function revealBlock(q,run){
+  var pool=((q.challenges||{}).secrets)||[];if(!pool.length)return "";
+  var h='<section class="page"><p class="eyebrow">Secret objective reveals</p>';
+  ["p1","p2"].forEach(function(pid){
+    var r=run.reveals&&run.reveals[pid];
+    if(r){h+='<div class="chal done"><p><strong>'+esc(pname(pid))+'\'s secret:</strong> '+esc(r.text)+'</p><span class="chip '+(r.ok?"ok":"bad")+'">'+(r.ok?"pulled it off":"didn't manage it")+'</span></div>';return}
+    if(mine().indexOf(pid)>=0){var i=secretIndex(q,pid);
+      h+='<div class="secret"><p><strong>'+esc(pname(pid))+', read yours out loud:</strong></p><p class="note">'+esc(pool[i])+'</p><div class="row"><button class="btn sm" data-act="reveal" data-k="'+pid+'" data-v="1">I pulled it off</button><button class="btn sm ghost" data-act="reveal" data-k="'+pid+'" data-v="0">Didn\'t manage it</button></div></div>';
+    } else {
+      h+='<div class="chal"><p>Waiting for <strong>'+esc(pname(pid))+'</strong> to reveal on their phone.</p><details><summary class="small" style="cursor:pointer">Their phone can\'t save? Enter it here</summary><div class="stack" style="margin-top:8px"><select id="rev-'+pid+'">'+pool.map(function(t,i){return '<option value="'+i+'">'+esc(t)+'</option>'}).join("")+'</select><div class="row"><button class="btn sm" data-act="revealFor" data-k="'+pid+'" data-v="1">They pulled it off</button><button class="btn sm ghost" data-act="revealFor" data-k="'+pid+'" data-v="0">They didn\'t</button></div></div></details></div>';
+    }
+  });
+  return h+'</section>';
+}
+function photoBlock(q,run,editable){
+  var list=S.photos[q.id];
+  var h='<section class="page"><p class="eyebrow">Photos</p>';
+  if(!list){loadPhotos(q.id);h+='<p class="faded">Looking for photos…</p>'}
+  else if(!list.length)h+='<p class="faded">No photos yet.'+(editable?" Add the team photo, the weirdest thing you saw, the dessert.":"")+'</p>';
+  else h+='<div class="photos">'+list.map(function(p){return '<figure><img src="'+esc(p.data)+'" alt="Trip photo added by '+esc(pname(p.by))+'"><figcaption><span>'+esc(pname(p.by))+'</span>'+(editable?'<button data-act="delPhoto" data-k="'+esc(p.id)+'">remove</button>':'')+'</figcaption></figure>'}).join("")+'</div>';
+  if(editable)h+='<div class="row"><input type="file" id="photoIn" accept="image/*" multiple '+(S.photoBusy?"disabled":"")+' style="max-width:100%">'+(S.photoBusy?'<span class="small faded">Saving…</span>':'')+'</div><p class="small faded">Photos are shrunk before saving so the journal stays light. Keep the originals on your phone.</p>';
+  return h+'</section>';
+}
+function homeAgain(q,run){
+  var sp=run.spend||{};
+  var h='<section class="page"><p class="eyebrow">Home safe</p>'+tick("checkin","x",run.checkin,"<strong>We're home, and we've told our trusted person.</strong>")+'</section>';
+  h+=challengeBlocks(q,run).replace(/<section class="page"><p class="eyebrow">Secret objectives<\/p>[\s\S]*?<\/section>/,"");
+  h+=revealBlock(q,run);
+  if(run.modifier)h+='<section class="page"><p class="eyebrow">The modifier</p><p><strong>'+esc(run.modifier.name)+'.</strong> Did you keep to it?</p><div class="seg"><button data-act="modOk" data-v="yes" aria-pressed="'+(run.modOk==="yes")+'">We did</button><button data-act="modOk" data-v="no" aria-pressed="'+(run.modOk==="no")+'">Not quite</button></div></section>';
+  h+='<section class="page"><p class="eyebrow">What it cost</p><div class="row"><label class="grow">Gas $<input type="number" inputmode="decimal" min="0" id="sp-gas" data-spend="gas" value="'+esc(sp.gas==null?"":sp.gas)+'"></label><label class="grow">Food $<input type="number" inputmode="decimal" min="0" id="sp-food" data-spend="food" value="'+esc(sp.food==null?"":sp.food)+'"></label><label class="grow">Other $<input type="number" inputmode="decimal" min="0" id="sp-other" data-spend="other" value="'+esc(sp.other==null?"":sp.other)+'"></label></div><p class="small faded">Estimate was '+esc((q.costs||{}).total)+'.</p></section>';
+  h+=photoBlock(q,run,true);
+  h+='<section class="page"><p class="eyebrow">The adventure log</p><p class="small faded">A short telling of the trip for the scrapbook. Have it written from what you marked above, then change anything you like.</p>'+
+    '<textarea id="story" data-story="1" placeholder="How did it go?">'+esc(run.story||"")+'</textarea>'+
+    '<div class="row"><button class="btn sm ghost" data-act="story" '+(S.storyBusy?"disabled":"")+'>'+(S.storyBusy?"Writing…":(run.story?"Write it again":"Write our adventure log"))+'</button>'+(S.storyErr?'<span class="small" style="color:var(--oxblood)">'+esc(S.storyErr)+'</span>':'')+'</div></section>';
+  var need=[];if(!run.checkin)need.push("tick the home check-in");if(!run.boss)need.push("say how the boss went");
+  h+='<section class="page"><p>Sealing the entry pays out XP, gold and loot, and pins this place on your map.</p><div class="row"><button class="btn" data-act="seal" '+(need.length?"disabled":"")+'>Seal this entry</button>'+(need.length?'<span class="small faded">First: '+esc(need.join(", "))+'.</span>':'')+'</div></section>';
+  return h;
+}
+function rewardsBlock(run){
+  var r=run.rewards;if(!r)return "";
+  return '<section class="page"><p class="eyebrow">Spoils</p><div class="grid2">'+["p1","p2"].map(function(pid){var x=r[pid]||{};
+    return '<div class="stack"><h3>'+esc(pname(pid))+'</h3><p><span class="chip gold">+'+(x.xp||0)+' XP</span> <span class="chip gold">+'+(x.gold||0)+' gold</span></p>'+
+     ((x.loot||[]).length?'<p><strong>Loot:</strong> '+esc(x.loot.join(", "))+'</p>':'')+((x.titles||[]).length?'<p><strong>Title earned:</strong> '+esc(x.titles.join(", "))+'</p>':'')+
+     '<ul class="plain small faded">'+(x.lines||[]).map(function(l){return '<li>'+esc(l)+'</li>'}).join("")+'</ul></div>'}).join("")+'</div></section>';
+}
+function closedQuest(q,run){
+  var h="";
+  if(run.status==="vetoed")h+='<section class="page"><span class="stamp">Vetoed</span><p>No penalty, no hard feelings. Knowing what you don\'t feel like doing is a skill.</p><p class="note">A fresh quest arrives Friday.</p></section>';
+  else if(run.status==="bailed")h+='<section class="page"><span class="stamp">Tactical retreat</span><p>You called it and came home. That is the party working exactly as it should.</p><p><strong>Text your trusted person that you\'re home</strong> if you haven\'t yet.</p></section>';
+  else h+='<section class="page"><span class="stamp">Conquered</span>'+(run.story?'<p class="story">'+esc(run.story)+'</p>':'')+'<div><button class="btn sm ghost" data-tab="scrapbook">See it in the scrapbook</button></div></section>';
+  return h+rewardsBlock(run);
+}
+
+/* ----- PARTY ----- */
+function blankDraft(){return {p1:{name:"",cls:"pathfinder",stats:{}},p2:{name:"",cls:"bard",stats:{}}}}
+function charEditor(pid,p,pointsLeft,isDraft){
+  var h='<div class="stack"><div class="row"><div class="seal">'+esc((p.name||"?").charAt(0).toUpperCase())+'</div><div class="grow"><label class="small faded" for="nm-'+pid+'">Name</label><input type="text" id="nm-'+pid+'" maxlength="24" data-name="'+pid+'" value="'+esc(p.name||"")+'" placeholder="'+(pid==="p1"?"First adventurer":"Second adventurer")+'"></div></div>'+
+   '<div><label class="small faded" for="cl-'+pid+'">Class</label><select id="cl-'+pid+'" data-cls="'+pid+'">'+Object.keys(CLASSES).map(function(k){return '<option value="'+k+'" '+(p.cls===k?"selected":"")+'>'+esc(CLASSES[k].n)+'</option>'}).join("")+'</select><p class="note" style="font-size:1.1rem">'+esc((CLASSES[p.cls]||{}).t)+'</p></div>'+
+   '<p class="small faded">'+pointsLeft+' stat point'+(pointsLeft===1?"":"s")+' left to spend</p><div class="stat">';
+  STATS.forEach(function(s){var own=(p.stats&&p.stats[s[0]])||0;
+    h+='<span>'+s[1]+'</span><span class="pips">'+(isDraft?'<button data-act="stat" data-p="'+pid+'" data-k="'+s[0]+'" data-v="-1" aria-label="Lower '+s[1]+'" '+(own>0?"":"disabled")+'>−</button>':'')+'<strong style="min-width:1.5em;text-align:center">'+statOf(p,s[0])+'</strong><button data-act="stat" data-p="'+pid+'" data-k="'+s[0]+'" data-v="1" aria-label="Raise '+s[1]+'" '+(pointsLeft>0?"":"disabled")+'>+</button></span>'});
+  return h+'</div></div>';
+}
+function viewParty(){
+  if(!S.party){
+    if(!S.draft)S.draft=blankDraft();
+    var d=S.draft,ok=d.p1.name.trim()&&d.p2.name.trim()&&spent(d.p1)===START_POINTS&&spent(d.p2)===START_POINTS;
+    return '<section class="page"><h2>Roll your characters</h2><p>Do this together, on one phone. Each of you picks a name and a class, then spends '+START_POINTS+' stat points. Stats add bonus XP when a challenge leans on them.</p></section>'+
+     '<section class="page"><div class="grid2">'+charEditor("p1",d.p1,START_POINTS-spent(d.p1),true)+charEditor("p2",d.p2,START_POINTS-spent(d.p2),true)+'</div>'+
+     '<div class="row"><button class="btn" data-act="found" '+(ok?"":"disabled")+'>Found the party</button>'+(ok?'':'<span class="small faded">Both names and all stat points first.</span>')+'</div></section>';
+  }
+  var t=totals(),h="",both=Math.floor((t.p1.xp+t.p2.xp)/2),plv=levelOf(both);
+  h+='<section class="page"><p class="eyebrow">The party</p><h2>'+esc(PARTY_TITLES[Math.min(plv-1,PARTY_TITLES.length-1)])+'</h2><p>Party level <strong>'+plv+'</strong> · purse <strong>'+(t.p1.gold+t.p2.gold)+' gold</strong> · '+Object.keys(S.runs).filter(function(k){return S.runs[k].status==="done"}).length+' places conquered</p>'+xpBar(both)+'</section>';
+  h+='<section class="page"><div class="grid2">'+["p1","p2"].map(function(pid){
+    var p=S.party[pid]||{},x=t[pid],lv=levelOf(x.xp),left=START_POINTS+(lv-1)-spent(p);
+    var title=x.titles.length?x.titles[x.titles.length-1]:LEVEL_TITLES[Math.min(lv-1,LEVEL_TITLES.length-1)];
+    var c='<div class="stack"><div class="row"><div class="seal">'+esc((p.name||"?").charAt(0).toUpperCase())+'</div><div class="grow"><h3>'+esc(p.name)+'</h3><p class="small faded">Level '+lv+' '+esc((CLASSES[p.cls]||{}).n)+' · '+esc(title)+'</p></div></div>'+xpBar(x.xp)+
+      '<p><span class="chip gold">'+x.gold+' gold</span> <span class="chip">'+x.xp+' XP</span></p>'+
+      (left>0?'<p class="note" style="font-size:1.1rem">Level up! '+left+' stat point'+(left===1?"":"s")+' to spend.</p>':'')+'<div class="stat">';
+    STATS.forEach(function(s){c+='<span>'+s[1]+'</span><span class="pips"><strong style="min-width:1.5em;text-align:center">'+statOf(p,s[0])+'</strong>'+(left>0?'<button data-act="spend" data-p="'+pid+'" data-k="'+s[0]+'" aria-label="Raise '+s[1]+'">+</button>':'')+'</span>'});
+    c+='</div>'+(x.loot.length?'<p class="eyebrow">Loot</p><ul class="plain small">'+x.loot.map(function(l){return '<li>'+esc(l)+'</li>'}).join("")+'</ul>':'<p class="small faded">No loot yet. Bosses drop it.</p>');
+    return c+'</div>'}).join("")+'</div></section>';
+  var a=achievements();
+  h+='<section class="page"><p class="eyebrow">Couple achievements</p>'+(a.length?'<ul class="plain">'+a.map(function(x){return '<li><strong>'+esc(x.n)+'.</strong> '+esc(x.t)+'</li>'}).join("")+'</ul>':'<p class="faded">None yet. The first one comes with your first finished quest.</p>')+'</section>';
+  return h;
+}
+function xpBar(xp){var lv=levelOf(xp),a=floorOf(lv),b=floorOf(lv+1);return '<div><div class="bar" role="img" aria-label="'+(xp-a)+' of '+(b-a)+' XP toward level '+(lv+1)+'"><i style="width:'+Math.round(100*(xp-a)/(b-a))+'%"></i></div><p class="small faded">'+(b-xp)+' XP to level '+(lv+1)+'</p></div>'}
+
+/* ----- SCRAPBOOK ----- */
+function proj(lat,lon){return [((lon+114.2)/3.5*620).toFixed(1),((42.15-lat)/2.55*600).toFixed(1)]}
+function pts(a){return a.map(function(p){return proj(p[0],p[1]).join(",")}).join(" ")}
+function mapSvg(){
+  var lake=[[41.70,-112.80],[41.62,-112.62],[41.45,-112.55],[41.30,-112.50],[41.20,-112.46],[41.25,-112.38],[41.40,-112.33],[41.48,-112.20],[41.40,-112.12],[41.28,-112.15],[41.18,-112.18],[41.08,-112.12],[40.98,-112.02],[40.88,-111.95],[40.80,-112.00],[40.76,-112.12],[40.72,-112.22],[40.70,-112.38],[40.76,-112.52],[40.88,-112.66],[41.02,-112.78],[41.18,-112.90],[41.38,-113.02],[41.55,-113.05],[41.68,-112.95]];
+  var isle=[[41.06,-112.24],[40.98,-112.20],[40.90,-112.18],[40.85,-112.17],[40.87,-112.22],[40.96,-112.26],[41.04,-112.27]];
+  var roads=[[[42.0,-112.22],[41.71,-112.17],[41.51,-112.02],[41.22,-111.97],[41.06,-111.97],[40.76,-111.89],[40.39,-111.85],[40.23,-111.66],[39.71,-111.84]],
+    [[41.71,-112.17],[41.97,-112.71],[42.08,-113.1]],[[41.18,-112.0],[41.04,-111.68],[40.97,-111.44]],
+    [[40.74,-114.04],[40.72,-113.0],[40.68,-112.26],[40.76,-111.89],[40.72,-111.50],[40.97,-111.44],[41.27,-110.96]],
+    [[41.51,-112.02],[41.74,-111.83],[41.95,-111.39]]];
+  var towns=[["Ogden",41.223,-111.974,8,4],["Salt Lake City",40.76,-111.89,16,5],["Logan",41.737,-111.834,8,4],["Brigham City",41.51,-112.015,8,-6],["Provo",40.234,-111.658,8,4],["Wendover",40.737,-114.037,6,-8],["Park City",40.646,-111.498,8,14],["Evanston",41.268,-110.963,-58,-8],["Tooele",40.53,-112.298,-44,4],["Nephi",39.71,-111.836,8,4],["Snowville",41.966,-112.71,-60,14],["Garden City",41.947,-111.394,-30,18]];
+  var s='<svg viewBox="0 0 620 600" role="img" aria-label="Hand-drawn map of northern Utah with a pin for each quest">';
+  s+='<rect x="1" y="1" width="618" height="598" fill="var(--page)" stroke="var(--rule)"/>';
+  s+='<polygon points="'+pts(lake)+'" fill="var(--lake)" stroke="var(--faded)" stroke-width="1" stroke-linejoin="round"/>';
+  s+='<polygon points="'+pts(isle)+'" fill="var(--page)" stroke="var(--faded)" stroke-width=".8"/>';
+  var ul=proj(40.21,-111.80),bl=proj(41.98,-111.33);
+  s+='<ellipse cx="'+ul[0]+'" cy="'+ul[1]+'" rx="16" ry="34" fill="var(--lake)" stroke="var(--faded)" stroke-width=".8"/><ellipse cx="'+bl[0]+'" cy="'+bl[1]+'" rx="9" ry="30" fill="var(--lake)" stroke="var(--faded)" stroke-width=".8"/>';
+  var gl=proj(41.12,-112.62);s+='<text x="'+gl[0]+'" y="'+gl[1]+'" font-family="var(--display)" font-style="italic" font-size="15" fill="var(--faded)" text-anchor="middle">Great Salt Lake</text>';
+  for(var la=40.35;la<=41.65;la+=0.16){var m=proj(la,-111.72+(Math.round(la*10)%3)*0.04);
+    s+='<path d="M'+(m[0]-9)+' '+(+m[1]+6)+' L'+m[0]+' '+(m[1]-7)+' L'+(+m[0]+9)+' '+(+m[1]+6)+'" fill="none" stroke="var(--faded)" stroke-width="1.1" stroke-linejoin="round"/>'}
+  roads.forEach(function(r){s+='<polyline points="'+pts(r)+'" fill="none" stroke="var(--brass)" stroke-width="1.6" stroke-dasharray="5 3" stroke-linejoin="round"/>'});
+  towns.forEach(function(t){var p=proj(t[1],t[2]);s+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="2.4" fill="var(--ink)"/><text x="'+(+p[0]+t[3])+'" y="'+(+p[1]+t[4])+'" font-family="var(--body)" font-size="12" fill="var(--ink)">'+t[0]+'</text>'});
+  var hm=proj(41.177,-112.004);
+  s+='<path d="M'+(hm[0]-7)+' '+(+hm[1]+5)+' L'+(hm[0]-7)+' '+(hm[1]-2)+' L'+hm[0]+' '+(hm[1]-9)+' L'+(+hm[0]+7)+' '+(hm[1]-2)+' L'+(+hm[0]+7)+' '+(+hm[1]+5)+' Z" fill="var(--pine)"/><text x="'+(hm[0]-10)+'" y="'+(+hm[1]+3)+'" font-family="var(--hand)" font-size="16" fill="var(--pine)" text-anchor="end">home</text>';
+  S.quests.forEach(function(q){var pl=q.place||{};if(typeof pl.lat!=="number"||typeof pl.lon!=="number")return;
+    var r=S.runs[q.id]||{},p=proj(pl.lat,pl.lon),done=r.status==="done",closed=FINAL[r.status];
+    s+='<g data-act="entry" data-q="'+esc(q.id)+'" style="cursor:pointer" '+(closed?'':'class="pulse"')+'><circle cx="'+p[0]+'" cy="'+p[1]+'" r="11" fill="'+(done?"var(--oxblood)":"var(--page)")+'" stroke="var(--oxblood)" stroke-width="2" '+(done?'':'stroke-dasharray="3 2"')+'/><text x="'+p[0]+'" y="'+(+p[1]+4.5)+'" text-anchor="middle" font-family="var(--display)" font-size="13" fill="'+(done?"var(--page)":"var(--oxblood)")+'">'+(done?esc(q.number):"?")+'</text><title>'+esc(q.title)+'</title></g>'});
+  var c=proj(39.82,-113.75);
+  s+='<g transform="translate('+c[0]+','+c[1]+')" fill="none" stroke="var(--faded)"><circle r="20"/><path d="M0 -26 L5 0 L0 26 L-5 0 Z" fill="var(--faded)" stroke="none" opacity=".5"/><text y="-30" text-anchor="middle" font-family="var(--display)" font-size="13" fill="var(--faded)" stroke="none">N</text></g>';
+  return s+'</svg>';
+}
+function viewScrapbook(){
+  var closed=S.quests.filter(function(q){var r=S.runs[q.id];return r&&FINAL[r.status]&&r.status!=="vetoed"});
+  var h='<section class="page"><p class="eyebrow">Everywhere we\'ve conquered</p><div class="mapbox">'+mapSvg()+'</div><p class="small faded">Filled pins are conquered. A dashed pin is a quest still waiting. The map is a sketch, so treat it as a keepsake and use your phone for directions.</p></section>';
+  if(!closed.length)return h+'<section class="page"><p class="note">The first page is still blank.</p><p>Each finished quest lands here with your photos, who won each duel, the secret reveals and the story of the trip.</p></section>';
+  closed.forEach(function(q){var r=S.runs[q.id],ch=q.challenges||{},open=S.openEntry===q.id;
+    h+='<section class="page"><details class="entry" data-entry="'+esc(q.id)+'" '+(open?"open":"")+'><summary>'+(r.thumb?'<img src="'+esc(r.thumb)+'" alt="">':'<div class="seal">'+esc(q.number)+'</div>')+'<div class="grow"><h3>'+esc(q.title)+'</h3><p class="small faded">'+esc((q.place||{}).name)+(r.doneAt?' · '+esc(new Date(r.doneAt).toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"})):'')+' · '+esc(statusWord(r.status))+'</p></div></summary>';
+    if(open){
+      h+='<div class="stack">'+(r.story?'<p class="story">'+esc(r.story)+'</p>':'');
+      var duels=(ch.duels||[]).filter(function(d){return r.duels&&r.duels[d.id]});
+      if(duels.length)h+='<p class="eyebrow">Duels</p><ul class="plain">'+duels.map(function(d){var w=r.duels[d.id];return '<li>'+esc(d.title)+': <strong>'+(w==="tie"?"a tie":esc(pname(w)))+'</strong></li>'}).join("")+'</ul>';
+      if(r.reveals)h+='<p class="eyebrow">Secret objectives</p><ul class="plain">'+["p1","p2"].filter(function(p){return r.reveals[p]}).map(function(p){return '<li><strong>'+esc(pname(p))+':</strong> '+esc(r.reveals[p].text)+' <span class="chip '+(r.reveals[p].ok?"ok":"bad")+'">'+(r.reveals[p].ok?"pulled it off":"didn't manage it")+'</span></li>'}).join("")+'</ul>';
+      if(r.boss)h+='<p><strong>Boss, '+esc((ch.boss||{}).name)+':</strong> '+(r.boss==="win"?"beaten":"got away")+'</p>';
+      if(r.spend){var tot=(+r.spend.gas||0)+(+r.spend.food||0)+(+r.spend.other||0);if(tot)h+='<p class="small faded">Spent about $'+tot.toFixed(0)+' for two.</p>'}
+      h+='</div>';
+    }
+    h+='</details>'+(open?photoBlock(q,r,false).replace('<section class="page">','<div class="stack">').replace(/<\/section>$/,'</div>')+rewardsBlock(r).replace('<section class="page">','<div class="stack">').replace(/<\/section>$/,'</div>'):'')+'</section>';
+  });
+  return h;
+}
+
+/* ----- CAMP ----- */
+function viewCamp(){
+  return '<section class="page">'+whoPicker()+'</section>'+
+  '<section class="page"><p class="eyebrow">How a quest goes</p><ol class="plain"><li><strong>Friday:</strong> a new quest lands on the Quest page, already checked for hours, cost, roads and season.</li><li><strong>Accept or veto.</strong> Accepting rolls a random modifier.</li><li><strong>Pack:</strong> share your location, run the winter checklist, then set out.</li><li><strong>Play:</strong> co-op challenges, duels, your secret objective and the boss.</li><li><strong>Home:</strong> check in, reveal secrets, add photos, seal the entry for XP, gold and loot.</li></ol><p>A season is a run of quests. Vetoes and bail-outs never end the run.</p></section>'+
+  '<section class="page"><p class="eyebrow" style="color:var(--pine)">The party oath · these beat every game rule</p><ol class="plain">'+OATH.map(function(o){return '<li>'+esc(o)+'</li>'}).join("")+'</ol></section>'+
+  '<section class="page"><p class="eyebrow">Two phones, one log</p><p>Everything except secret objectives is kept in one shared log, so both phones show the same quest, ticks, photos and scrapbook within a few seconds of each other.</p><ul class="plain"><li>Both of you need to open this page from its claude.ai link while signed in to a Claude account.</li><li>The second phone can only <em>save</em> changes if its account was invited to this page as an editor. Otherwise it can read everything and still holds its own secret objective, and the first phone records the results.</li><li>No second account? Choose "Both of us" above and pass one phone back and forth.</li><li>Secret objectives stay on the phone that drew them until the reveal. Clearing that phone\'s browser data before the reveal draws a new one.</li></ul></section>';
+}
+
+/* ---------- photos ---------- */
+function loadPhotos(qid){
+  if(!S.db)return;
+  S.db.collection("photos").where("q","==",qid).get().then(function(s){
+    S.photos[qid]=s.docs.map(function(d){var x=Object.assign({},d.data());x.id=d.id;return x}).sort(function(a,b){return (a.at||0)-(b.at||0)});scheduleRender();
+  }).catch(function(){S.photos[qid]=[];scheduleRender()});
+}
+function shrink(file,max,q){
+  return new Promise(function(res,rej){var r=new FileReader();r.onerror=rej;r.onload=function(){var im=new Image();im.onerror=rej;im.onload=function(){
+    var k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
+    c.getContext("2d").drawImage(im,0,0,c.width,c.height);res(c.toDataURL("image/jpeg",q))};im.src=r.result};r.readAsDataURL(file)});
+}
+function addPhotos(qid,files){
+  if(!S.db||!files.length)return;S.photoBusy=true;render();
+  var by=mine()[0]||"p1",list=[].slice.call(files,0,8),chain=Promise.resolve();
+  list.forEach(function(f,i){chain=chain.then(function(){
+    return shrink(f,1000,0.7).then(function(d){return d.length>230000?shrink(f,760,0.6):d}).then(function(d){
+      if(d.length>250000)throw {code:"too_big"};
+      return S.db.collection("photos").add({q:qid,by:by,at:Date.now()+i,data:d}).then(function(){
+        var run=S.runs[qid]||{};if(run.thumb)return;return shrink(f,160,0.6).then(function(t){return runPatch(qid,{thumb:t})})})})})});
+  chain.catch(function(e){if(e&&e.code==="invalid_argument")S.readOnly=true;else S.err=e&&e.code==="quota_exceeded"?"The journal is full. Remove some older photos first.":"A photo couldn't be saved. Try a different one."})
+   .then(function(){S.photoBusy=false;delete S.photos[qid];render()});
+}
+
+/* ---------- story ---------- */
+function storyFacts(q,run){
+  var ch=q.challenges||{},L=[];
+  L.push("Quest: "+q.title+" at "+(q.place||{}).name+", "+(q.place||{}).address+".");
+  L.push("About the place: "+q.why);
+  ["p1","p2"].forEach(function(pid){var p=(S.party&&S.party[pid])||{};L.push("Adventurer: "+pname(pid)+", a "+((CLASSES[p.cls]||{}).n||"traveler")+".")});
+  if(run.modifier)L.push("Modifier this week: "+run.modifier.name+" ("+(run.modOk==="yes"?"kept":"not kept")+").");
+  (ch.coop||[]).forEach(function(c){if(run.coop&&run.coop[c.id])L.push("Did together: "+c.title+".")});
+  (ch.duels||[]).forEach(function(d){var w=run.duels&&run.duels[d.id];if(w)L.push("Duel '"+d.title+"': "+(w==="tie"?"tied":pname(w)+" won")+".")});
+  ["p1","p2"].forEach(function(pid){var r=run.reveals&&run.reveals[pid];if(r)L.push(pname(pid)+"'s secret objective was '"+r.text+"' and they "+(r.ok?"pulled it off":"did not manage it")+".")});
+  if(run.boss)L.push("Boss '"+((ch.boss||{}).name)+"': "+(run.boss==="win"?"beaten":"not beaten")+".");
+  if(q.restStop)L.push("Rest stop: "+q.restStop.name+".");
+  if(q.skySpot)L.push("Sunset or sky spot: "+q.skySpot.name+".");
+  return L;
+}
+function plainStory(q,run){
+  var ch=q.challenges||{},a=pname("p1"),b=pname("p2"),s="Quest No. "+q.number+". "+a+" and "+b+" set out in the trusty Sentra for "+(q.place||{}).name+". ";
+  var co=(ch.coop||[]).filter(function(c){return run.coop&&run.coop[c.id]}).length;
+  if(co)s+="Together they cleared "+co+" co-op challenge"+(co===1?"":"s")+". ";
+  (ch.duels||[]).forEach(function(d){var w=run.duels&&run.duels[d.id];if(w)s+=(w==="tie"?"The duel of "+d.title+" ended in a tie. ":pname(w)+" took the duel of "+d.title+". ")});
+  if(run.boss)s+=(run.boss==="win"?"The boss, "+(ch.boss||{}).name+", fell to the party. ":"The boss, "+(ch.boss||{}).name+", lives to be challenged again. ");
+  return s+"Then home, safe and checked in, with one more place on the map.";
+}
+function writeStory(q,run){
+  S.storyErr="";
+  if(!S.sample){runPatch(q.id,{story:plainStory(q,run)});return}
+  S.storyBusy=true;render();
+  var prompt="Write a short adventure-log entry (140 to 190 words, plain text, no headings, no markdown) for a couple's real-life road trip game. Tell it like a fond, slightly mock-heroic journal entry in the past tense, in third person, using the adventurers' names. Use ONLY the facts below. Do not invent details about the place, the weather, other people, or anything that was not listed. Keep it warm and funny, never mean about either person.\n\nFacts:\n- "+storyFacts(q,run).join("\n- ");
+  S.sample(prompt,{model:"claude-fable-5-2",cache:false}).then(function(r){S.storyBusy=false;return runPatch(q.id,{story:r.text.trim()})})
+   .catch(function(e){S.storyBusy=false;var c=e&&e.code;
+     if(c==="not_granted"||c==="sampling_disabled"||c==="capability_disabled"||c==="not_declared"){S.sample=null;runPatch(q.id,{story:plainStory(q,run)})}
+     else{S.storyErr=c==="rate_limited"?"Too many requests just now. Try again in a bit, or write it yourself.":"That didn't work. Try again, or write it yourself.";render()}});
+}
+
+/* ---------- finishing ---------- */
+function seal(q,run){
+  var rw=computeRewards(q,run),ch=q.challenges||{},used={};
+  Object.keys(S.runs).forEach(function(k){var r=S.runs[k].rewards;if(r)["p1","p2"].forEach(function(p){((r[p]||{}).loot||[]).forEach(function(l){used[l]=1})})});
+  var free=LOOT.filter(function(l){return !used[l]});if(free.length<2)free=LOOT.slice();
+  var w1=0,w2=0;Object.keys(run.duels||{}).forEach(function(k){if(run.duels[k]==="p1")w1++;if(run.duels[k]==="p2")w2++});
+  ["p1","p2"].forEach(function(pid){rw[pid].loot=[];rw[pid].titles=[];
+    if(run.boss==="win"){var i=Math.floor(Math.random()*free.length);rw[pid].loot.push(free.splice(i,1)[0]);if(ch.boss&&ch.boss.loot)rw[pid].loot.push(ch.boss.loot)}});
+  var short=(q.place||{}).short||(q.place||{}).name;
+  if(w1>w2)rw.p1.titles.push("Duelist of "+short);else if(w2>w1)rw.p2.titles.push("Duelist of "+short);
+  var n=(S.photos[q.id]||[]).length;
+  runPatch(q.id,{status:"done",doneAt:Date.now(),rewards:rw,photoCount:n,story:run.story||plainStory(q,run)});
+}
+function flatReward(xp,gold,why,loot){var o={};["p1","p2"].forEach(function(p){o[p]={xp:xp,gold:gold,lines:[why+" +"+xp+" XP"+(gold?", +"+gold+" gold":"")],loot:loot?[loot]:[],titles:[]}});return o}
+
+/* ---------- events ---------- */
+document.addEventListener("click",function(e){
+  var tb=e.target.closest("[data-tab]");
+  if(tb){S.tab=tb.dataset.tab;lsSet("rq.tab",S.tab);S.confirm="";render();window.scrollTo(0,0);return}
+  var el=e.target.closest("[data-act]");if(!el||el.tagName==="INPUT")return;
+  var act=el.dataset.act,k=el.dataset.k,v=el.dataset.v,q=currentQuest(),run=q?(S.runs[q.id]||{}):{};
+  if(act==="clearErr"){S.err="";render()}
+  else if(act==="who"){S.who=v;lsSet("rq.who",v);S.peek={};render()}
+  else if(act==="open"){S.qid=el.dataset.q;S.confirm="";render();window.scrollTo(0,0)}
+  else if(act==="entry"){S.openEntry=el.dataset.q;S.tab="scrapbook";render();var d=document.querySelector('[data-entry="'+el.dataset.q+'"]');if(d)d.scrollIntoView({block:"start"})}
+  else if(act==="ask"){S.confirm=v;render()}
+  else if(act==="cancel"){S.confirm="";render()}
+  else if(act==="peek"){S.peek[v]=!S.peek[v];render()}
+  else if(act==="triv"){S.triv[k]=true;render()}
+  else if(act==="stat"){var d2=S.draft[el.dataset.p],cur=(d2.stats[k]||0)+(+v);if(cur<0||(+v>0&&spent(d2)>=START_POINTS))return;d2.stats[k]=cur;render()}
+  else if(act==="found"){var b={created:Date.now()};["p1","p2"].forEach(function(p){b[p]={name:S.draft[p].name.trim().slice(0,24),cls:S.draft[p].cls,stats:S.draft[p].stats}});partySet(b);if(!S.who){S.who="both";lsSet("rq.who","both")}}
+  else if(act==="spend"){var pid=el.dataset.p,p=S.party[pid]||{},pt={};pt[pid]={stats:{}};pt[pid].stats[k]=((p.stats&&p.stats[k])||0)+1;partyPatch(pt)}
+  else if(!q)return;
+  else if(act==="accept"){var mods=(q.modifiers||[]).filter(function(m){return !m.night||q.nightOk===true});
+    var m=mods.length?mods[Math.floor(Math.random()*mods.length)]:null;runPatch(q.id,{status:"accepted",modifier:m,acceptedAt:Date.now()});window.scrollTo(0,0)}
+  else if(act==="veto"){S.confirm="";runPatch(q.id,{status:"vetoed",doneAt:Date.now(),rewards:flatReward(5,0,"Wise veto")})}
+  else if(act==="setOut"){runPatch(q.id,{status:"out",outAt:Date.now()});window.scrollTo(0,0)}
+  else if(act==="bail"){S.confirm="";runPatch(q.id,{status:"bailed",doneAt:Date.now(),rewards:flatReward(20,10,"Tactical retreat","Token of the Tactical Retreat")});window.scrollTo(0,0)}
+  else if(act==="home"){runPatch(q.id,{status:"home",homeAt:Date.now()});window.scrollTo(0,0)}
+  else if(act==="duel"){var o={duels:{}};o.duels[k]=(run.duels&&run.duels[k]===v)?"":v;runPatch(q.id,o)}
+  else if(act==="boss"){runPatch(q.id,{boss:run.boss===v?"":v})}
+  else if(act==="modOk"){runPatch(q.id,{modOk:v})}
+  else if(act==="reveal"||act==="revealFor"){var pool=(q.challenges||{}).secrets||[],idx;
+    if(act==="reveal")idx=secretIndex(q,k);else{var sel=$("rev-"+k);idx=sel?+sel.value:0}
+    var rv={reveals:{}};rv.reveals[k]={text:pool[idx]||"",ok:v==="1"};runPatch(q.id,rv)}
+  else if(act==="story"){var ta=$("story");if(ta&&ta.value!==(run.story||""))run=Object.assign({},run,{story:ta.value});writeStory(q,run)}
+  else if(act==="seal"){seal(q,run);window.scrollTo(0,0)}
+  else if(act==="delPhoto"){if(S.confirm!=="del:"+k){S.confirm="del:"+k;el.textContent="tap again";return}
+    S.confirm="";S.db.doc("photos/"+k).delete().then(function(){delete S.photos[q.id];render()}).catch(function(){S.err="That photo couldn't be removed.";render()})}
+});
+document.addEventListener("change",function(e){
+  var t=e.target,q=currentQuest();
+  if(t.dataset.cls){if(S.draft){S.draft[t.dataset.cls].cls=t.value;render()}return}
+  if(t.id==="photoIn"&&q){addPhotos(q.id,t.files);return}
+  if(!q)return;var run=S.runs[q.id]||{},act=t.dataset.act,k=t.dataset.k,o;
+  if(act==="pre"){o={pre:{}};o.pre[k]=t.checked;runPatch(q.id,o)}
+  else if(act==="coop"){o={coop:{}};o.coop[k]=t.checked;runPatch(q.id,o)}
+  else if(act==="bossPart"){o={bossParts:{}};o.bossParts[k]=t.checked;runPatch(q.id,o)}
+  else if(act==="checkin"){runPatch(q.id,{checkin:t.checked})}
+  else if(t.dataset.spend){o={spend:{}};o.spend[t.dataset.spend]=t.value===""?null:Math.max(0,+t.value||0);runPatch(q.id,o)}
+  else if(t.dataset.story){if(t.value!==(run.story||""))runPatch(q.id,{story:t.value.slice(0,4000)})}
+});
+document.addEventListener("input",function(e){var t=e.target;
+  if(t.dataset.name&&S.draft){S.draft[t.dataset.name].name=t.value;
+    var b=document.querySelector('[data-act="found"]');if(b){var d=S.draft;b.disabled=!(d.p1.name.trim()&&d.p2.name.trim()&&spent(d.p1)===START_POINTS&&spent(d.p2)===START_POINTS)}}
+});
+document.addEventListener("toggle",function(e){var d=e.target;if(d.dataset&&d.dataset.entry){var was=S.openEntry===d.dataset.entry;if(d.open&&!was){S.openEntry=d.dataset.entry;render()}else if(!d.open&&was){S.openEntry=null;render()}}},true);
+
+render();boot();
+})();
+</script>
