@@ -90,6 +90,27 @@ nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--page
   padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px))}
 nav.tabs button{flex:1 1 0;max-width:180px;border:0;background:none;padding:12px 4px 10px;font-family:var(--display);font-size:1.05rem;color:var(--faded);border-top:3px solid transparent;margin-top:-3px}
 nav.tabs button[aria-current=page]{color:var(--pine);border-top-color:var(--pine)}
+.steps{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.steps li{flex:1 1 0;min-width:0;text-align:center;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--faded);border-top:3px solid var(--rule);padding-top:5px}
+.steps li.past{border-top-color:var(--pine);color:var(--pine)}
+.steps li.now{border-top-color:var(--brass);color:var(--ink);font-weight:700}
+.maplink{display:inline-flex;align-items:center;gap:3px;font-size:.9rem;white-space:nowrap}
+.maplink svg{width:14px;height:14px;flex:none}
+.btn{min-height:44px} .btn.sm{min-height:40px}
+.seg button{min-height:44px;padding:8px 14px}
+.pips button{width:38px;height:38px}
+label.tick{padding:8px 0} label.tick input{width:26px;height:26px;margin-top:0}
+.btn:active,.seg button:active,nav.tabs button:active,.pips button:active{transform:translateY(1px)}
+nav.tabs button{display:flex;flex-direction:column;align-items:center;gap:1px;font-size:.92rem;padding:8px 4px 8px}
+nav.tabs svg{width:22px;height:22px}
+.syncline{font-size:.85rem;color:var(--faded);margin-top:-8px}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--faded);margin-right:6px}
+.dot.ok{background:var(--pine)} .dot.bad{background:var(--oxblood)} .dot.busy{background:var(--brass)}
+.heads{border:1px solid var(--brass);border-left:5px solid var(--brass);border-radius:3px;padding:10px 12px;background:var(--page)}
+.count{font-weight:400;letter-spacing:0;text-transform:none;color:var(--faded);margin-left:8px}
+.photos img{cursor:zoom-in}
+.light{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.9);display:grid;place-items:center;padding:16px;cursor:zoom-out}
+.light img{max-width:100%;max-height:100%;object-fit:contain;border:6px solid #f6efdd}
 @media (prefers-reduced-motion:no-preference){ .pulse{animation:pulse 2.4s ease-in-out infinite} }
 @keyframes pulse{50%{opacity:.35}}
 </style>
@@ -99,16 +120,17 @@ nav.tabs button[aria-current=page]{color:var(--pine);border-top-color:var(--pine
     <h1>Roadbound Quest Log</h1>
     <small id="mastNote">two adventurers, one Sentra</small>
   </header>
+  <p id="syncLine" class="syncline" hidden></p>
   <div id="alerts" class="stack"></div>
   <main id="view" class="stack" style="gap:16px">
     <section class="page"><p class="note">Opening the journal…</p><p class="faded">Your party, quests and scrapbook will appear here once the shared log answers.</p></section>
   </main>
 </div>
 <nav class="tabs" aria-label="Journal sections">
-  <button data-tab="quest">Quest</button>
-  <button data-tab="party">Party</button>
-  <button data-tab="scrapbook">Scrapbook</button>
-  <button data-tab="camp">Camp</button>
+  <button data-tab="quest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.500-6-10a6 6 0 0 1 12 0c0 4.500-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg>Quest</button>
+  <button data-tab="party"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="9" r="3"/><circle cx="16.500" cy="9.500" r="2.500"/><path d="M2.500 19c.500-3 2.700-4.500 5.500-4.500s5 1.500 5.500 4.500M15 14.600c.500-.100 1-.100 1.500-.100 2.600 0 4.500 1.500 5 4.500"/></svg>Party</button>
+  <button data-tab="scrapbook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h11"/></svg>Scrapbook</button>
+  <button data-tab="camp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4 3 20h18z"/><path d="M12 13l-2.500 7h5z"/></svg>Camp</button>
 </nav>
 
 <script>
@@ -145,13 +167,31 @@ var FINAL={done:1,vetoed:1,bailed:1};
 /* ---------- state ---------- */
 var S={db:null,sample:null,loaded:{party:false,quests:false,runs:false},slow:false,dead:false,readOnly:false,err:"",
   party:null,quests:[],runs:{},tab:lsGet("rq.tab")||"quest",who:lsGet("rq.who")||"",qid:null,
-  draft:null,peek:{},confirm:"",photos:{},photoBusy:false,storyBusy:false,storyErr:"",mem:{},openEntry:null,triv:{}};
+  draft:null,peek:{},confirm:"",photos:{},photoBusy:false,storyBusy:false,storyErr:"",mem:{},openEntry:null,triv:{},open:{},edit:null,photosLoaded:false};
 
 function lsGet(k){try{return window.localStorage.getItem(k)}catch(e){return null}}
 function lsSet(k,v){try{window.localStorage.setItem(k,v)}catch(e){} }
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function safeUrl(u){return /^https:\/\//i.test(String(u||""))?String(u):""}
 function $(id){return document.getElementById(id)}
+function dOpen(k){return ' data-d="'+esc(k)+'"'+(S.open[k]?" open":"")}
+var PIN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.500-6-10a6 6 0 0 1 12 0c0 4.500-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg>';
+function mapLink(qy){qy=String(qy||"").trim();if(!qy)return "";return ' <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query='+encodeURIComponent(qy)+'" target="_blank" rel="noopener">'+PIN+'Map</a>'}
+function firstBit(t){return String(t||"").split(/\. /)[0].replace(/\.$/,"")}
+function steps(st){
+  var si={briefing:0,accepted:1,out:2,home:3,done:4}[st];if(si==null)return "";
+  return '<ol class="steps" aria-label="Quest progress">'+["Briefing","Pack","Road","Home","Sealed"].map(function(n,i){return '<li class="'+(i<si?"past":i===si?"now":"")+'"'+(i===si?' aria-current="step"':'')+'>'+n+'</li>'}).join("")+'</ol>';
+}
+function syncLine(){
+  var el=$("syncLine"),y=window.RQ&&window.RQ.sync;if(!el)return;
+  if(!y||!y.code()){el.hidden=true;return}
+  var c="ok",t="Linked with your partner's phone";
+  if(y.rejected()){c="bad";t="The shared journal turned a change away. See Camp."}
+  else if(y.offline()){c="busy";t="No connection. Changes are kept here and sent later."}
+  else if(y.pending()){c="busy";t="Sending changes…"}
+  else if(!y.lastOk()){c="busy";t="Linking…"}
+  el.hidden=false;el.innerHTML='<span class="dot '+c+'"></span>'+esc(t);
+}
 function pname(pid){var p=S.party&&S.party[pid];return (p&&p.name)||(pid==="p1"?"Player one":"Player two")}
 function other(pid){return pid==="p1"?"p2":"p1"}
 function mine(){return S.who==="both"?["p1","p2"]:(S.who==="p1"||S.who==="p2")?[S.who]:[]}
@@ -254,10 +294,17 @@ function boot(){
     db.collection("quests").onSnapshot(function(s){S.quests=s.docs.map(function(d){var x=Object.assign({},d.data());x.id=d.id;return x})
       .sort(function(a,b){return (b.number||0)-(a.number||0)});got("quests")},fail);
     db.collection("runs").onSnapshot(function(s){var m={};s.docs.forEach(function(d){m[d.id]=d.data()});S.runs=m;got("runs")},fail);
+    db.collection("photos").onSnapshot(function(s){var m={};s.docs.forEach(function(d){var x=Object.assign({},d.data());x.id=d.id;(m[x.q]=m[x.q]||[]).push(x)});
+      Object.keys(m).forEach(function(k){m[k].sort(function(a,b){return (a.at||0)-(b.at||0)})});S.photos=m;S.photosLoaded=true;scheduleRender()},function(){S.photosLoaded=true});
   });
   window.claude.use("sample").then(function(f){S.sample=f||null});
 }
-var pending=false;
+var pending=false,pressing=false,queued=false,pressT=0;
+function release(){pressing=false;if(queued){queued=false;render()}}
+document.addEventListener("pointerdown",function(){pressing=true;clearTimeout(pressT);pressT=setTimeout(release,1500)},true);
+document.addEventListener("pointerup",function(){clearTimeout(pressT);pressT=setTimeout(release,400)},true);
+document.addEventListener("pointercancel",function(){clearTimeout(pressT);release()},true);
+document.addEventListener("click",function(){clearTimeout(pressT);pressing=false},true);
 function scheduleRender(){
   var a=document.activeElement;
   if(a&&(a.tagName==="TEXTAREA"||(a.tagName==="INPUT"&&(a.type==="text"||a.type==="number")))&&$("view").contains(a)){pending=true;return}
@@ -267,6 +314,8 @@ document.addEventListener("focusout",function(){if(pending){pending=false;setTim
 
 /* ---------- render ---------- */
 function render(){
+  if(pressing){queued=true;return}
+  queued=false;syncLine();
   var tabs=document.querySelectorAll("nav.tabs button");
   for(var i=0;i<tabs.length;i++){if(tabs[i].dataset.tab===S.tab)tabs[i].setAttribute("aria-current","page");else tabs[i].removeAttribute("aria-current")}
   var al="";
@@ -296,8 +345,10 @@ function whoPicker(){
 
 /* ----- QUEST ----- */
 function currentQuest(){
+  var i,r;
   if(S.qid){var q=questById(S.qid);if(q)return q}
-  for(var i=0;i<S.quests.length;i++){var r=S.runs[S.quests[i].id];if(!r||!FINAL[r.status])return S.quests[i]}
+  for(i=0;i<S.quests.length;i++){r=S.runs[S.quests[i].id];if(r&&{accepted:1,out:1,home:1}[r.status])return S.quests[i]}
+  for(i=0;i<S.quests.length;i++){r=S.runs[S.quests[i].id];if(!r||!FINAL[r.status])return S.quests[i]}
   return S.quests[0]||null;
 }
 function viewQuest(){
@@ -318,9 +369,9 @@ function statusWord(s){return{accepted:"packing",out:"on the road",home:"home, w
 function questHeader(q,run,st){
   var p=q.place||{},d=q.drive||{};
   var h='<section class="page"><div class="row" style="justify-content:space-between"><p class="eyebrow">Quest No. '+esc(q.number)+(q.season?' · Season '+esc(q.season):'')+'</p><span class="chip">'+esc(statusWord(st))+'</span></div>'+
-   '<h2>'+esc(q.title)+'</h2>'+(q.tagline?'<p class="note">'+esc(q.tagline)+'</p>':'')+
+   steps(st)+'<h2>'+esc(q.title)+'</h2>'+(q.tagline?'<p class="note">'+esc(q.tagline)+'</p>':'')+
    '<p>'+esc(q.why)+'</p>'+
-   '<dl class="facts"><dt>Where</dt><dd><strong>'+esc(p.name)+'</strong><br>'+esc(p.address)+'</dd>'+
+   '<dl class="facts"><dt>Where</dt><dd><strong>'+esc(p.name)+'</strong><br>'+esc(p.address)+mapLink(p.map||((p.name||"")+", "+(p.address||"")))+'</dd>'+
    '<dt>Hours</dt><dd>'+esc(p.hours)+'</dd><dt>Cost</dt><dd>'+esc(p.cost)+'</dd>'+
    (p.parking?'<dt>Parking</dt><dd>'+esc(p.parking)+'</dd>':'')+
    '<dt>The drive</dt><dd>'+esc(d.summary)+'</dd>'+
@@ -339,20 +390,20 @@ function conditions(q){
 function planBlock(q){
   var pl=q.plan||{},rs=q.restStop,sk=q.skySpot,co=q.costs||{};
   var h='<section class="page"><p class="eyebrow">The plan</p><ol class="plan">'+(pl.steps||[]).map(function(s){return '<li><time>'+esc(s.time)+'</time><span>'+esc(s.text)+'</span></li>'}).join("")+'</ol>';
-  if(rs)h+='<hr class="rule"><p class="eyebrow">Rest stop</p><p><strong>'+esc(rs.name)+'</strong> · '+esc(rs.address)+'</p><p>'+esc(rs.what)+'</p><p class="small faded">'+esc(rs.hours)+'</p>'+(rs.backup?'<p class="small"><strong>Backup:</strong> '+esc(rs.backup)+'</p>':'');
-  if(sk)h+='<hr class="rule"><p class="eyebrow">'+esc(sk.kind||"Sunset spot")+'</p><p><strong>'+esc(sk.name)+'</strong> · '+esc(sk.address)+'</p><p>'+esc(sk.notes)+'</p>';
+  if(rs)h+='<hr class="rule"><p class="eyebrow">Rest stop</p><p><strong>'+esc(rs.name)+'</strong> · '+esc(rs.address)+mapLink(rs.map||((rs.name||"")+", "+(rs.address||"")))+'</p><p>'+esc(rs.what)+'</p><p class="small faded">'+esc(rs.hours)+'</p>'+(rs.backup?'<p class="small"><strong>Backup:</strong> '+esc(rs.backup)+'</p>':'');
+  if(sk)h+='<hr class="rule"><p class="eyebrow">'+esc(sk.kind||"Sunset spot")+'</p><p><strong>'+esc(sk.name)+'</strong> · '+esc(sk.address)+mapLink(sk.map)+'</p><p>'+esc(sk.notes)+'</p>';
   h+='<hr class="rule"><p class="eyebrow">Cost for two</p><dl class="facts"><dt>Gas</dt><dd>'+esc(co.gas)+'</dd><dt>Food</dt><dd>'+esc(co.food)+'</dd><dt>Entry</dt><dd>'+esc(co.entry)+'</dd><dt>Total</dt><dd><strong>'+esc(co.total)+'</strong></dd></dl>'+(co.notes?'<p class="small faded">'+esc(co.notes)+'</p>':'');
   return h+'</section>';
 }
 function safetyCard(q){
   var s=q.safety||{};
   return '<section class="page"><div class="safety"><p class="eyebrow" style="color:var(--pine)">Safety card</p><dl class="facts">'+
-   '<dt>Cell signal</dt><dd>'+esc(s.cell)+'</dd><dt>Nearest gas</dt><dd>'+esc(s.gas)+'</dd><dt>Nearest hospital</dt><dd>'+esc(s.hospital)+'</dd><dt>Back by</dt><dd><strong>'+esc(s.backBy)+'</strong></dd></dl>'+
-   (s.notes?'<p class="small">'+esc(s.notes)+'</p>':'')+'</div></section>';
+   '<dt>Cell signal</dt><dd>'+esc(s.cell)+'</dd><dt>Nearest gas</dt><dd>'+esc(s.gas)+mapLink(s.gasMap||firstBit(s.gas))+'</dd><dt>Nearest hospital</dt><dd>'+esc(s.hospital)+mapLink(s.hospitalMap||firstBit(s.hospital))+'</dd><dt>Back by</dt><dd><strong>'+esc(s.backBy)+'</strong></dd></dl>'+
+   (s.notes?'<p class="small">'+esc(s.notes)+'</p>':'')+'<p class="small faded">In an emergency, call 911 first.</p></div></section>';
 }
 function sourcesBlock(q){
   var src=(q.sources||[]).filter(function(s){return safeUrl(s.url)});
-  var h='<section class="page"><details><summary class="eyebrow" style="cursor:pointer">Where these facts came from</summary><ul class="plain" style="margin-top:8px">'+
+  var h='<section class="page"><details'+dOpen("src")+'><summary class="eyebrow" style="cursor:pointer">Where these facts came from</summary><ul class="plain" style="margin-top:8px">'+
     src.map(function(s){return '<li><a href="'+esc(safeUrl(s.url))+'" target="_blank" rel="noopener">'+esc(s.label)+'</a></li>'}).join("")+'</ul>';
   if(q.safetyCheck&&q.safetyCheck.length)h+='<p class="eyebrow" style="margin-top:12px">Checked against the nine safety rules</p><ul class="plain">'+q.safetyCheck.map(function(c){return '<li><strong>Rule '+esc(c.rule)+':</strong> '+esc(c.note)+'</li>'}).join("")+'</ul>';
   return h+'</details></section>';
@@ -399,12 +450,14 @@ function winnerSeg(act,id,val){
     return '<button data-act="'+act+'" data-k="'+esc(id)+'" data-v="'+o[0]+'" aria-pressed="'+(val===o[0])+'">'+esc(o[1])+'</button>'}).join("")+'</div>';
 }
 function challengeBlocks(q,run){
-  var ch=q.challenges||{},b=ch.boss||{},h='<section class="page"><p class="eyebrow">Co-op · do these together</p>';
+  var ch=q.challenges||{},b=ch.boss||{};
+  var cd=(ch.coop||[]).filter(function(c){return run.coop&&run.coop[c.id]}).length,dd=(ch.duels||[]).filter(function(d){return run.duels&&run.duels[d.id]}).length;
+  var h='<section class="page"><p class="eyebrow">Co-op · do these together<span class="count">'+cd+' of '+(ch.coop||[]).length+' done</span></p>';
   h+=(ch.coop||[]).map(function(c){var on=run.coop&&run.coop[c.id];
     return '<div class="chal '+(on?"done":"")+'">'+tick("coop",c.id,on,"<strong>"+esc(c.title)+".</strong> "+esc(c.text))+'</div>'}).join("");
-  h+='</section><section class="page"><p class="eyebrow">Duels · side by side, winner takes the points</p>';
+  h+='</section><section class="page"><p class="eyebrow">Duels · side by side, winner takes the points<span class="count">'+dd+' of '+(ch.duels||[]).length+' settled</span></p>';
   h+=(ch.duels||[]).map(function(d){var w=run.duels&&run.duels[d.id];
-    var tv=d.trivia?'<details><summary class="small" style="cursor:pointer">Trivia questions (one of you reads, the other answers, then swap)</summary><ol class="plain" style="margin-top:6px">'+d.trivia.map(function(t,i){var k=d.id+":"+i;
+    var tv=d.trivia?'<details'+dOpen("triv:"+d.id)+'><summary class="small" style="cursor:pointer">Trivia questions (one of you reads, the other answers, then swap)</summary><ol class="plain" style="margin-top:6px">'+d.trivia.map(function(t,i){var k=d.id+":"+i;
       return '<li>'+esc(t.q)+' '+(S.triv[k]?'<strong>'+esc(t.a)+'</strong>':'<button class="btn sm ghost" data-act="triv" data-k="'+esc(k)+'">Show answer</button>')+'</li>'}).join("")+'</ol></details>':'';
     return '<div class="chal '+(w?"done":"")+'"><p><strong>'+esc(d.title)+'.</strong> '+esc(d.text)+'</p>'+tv+winnerSeg("duel",d.id,w)+'</div>'}).join("");
   h+='</section>'+secretCards(q)+'<section class="page"><p class="eyebrow" style="color:var(--oxblood)">Boss</p><div class="chal boss"><h3>'+esc(b.name)+'</h3><p>'+esc(b.text)+'</p>';
@@ -418,7 +471,9 @@ function bailBlock(){
    confirmBox("bail","Bail on this quest and head home? You both earn XP, gold and a keepsake for making the call.","Yes, we're bailing","bail")+'</section>';
 }
 function onTheRoad(q,run){
-  return planBlock(q)+challengeBlocks(q,run)+safetyCard(q)+
+  var sf=q.safety||{},cn=q.conditions||{};
+  return '<div class="heads"><strong>Be home by '+esc(sf.backBy)+'.</strong>'+(cn.sunset?' <span class="small">Sunset: '+esc(cn.sunset)+'</span>':'')+'</div>'+
+   planBlock(q)+challengeBlocks(q,run)+safetyCard(q)+
    '<section class="page"><p>Back in the driveway?</p><div><button class="btn" data-act="home">We\'re home</button></div></section>'+bailBlock();
 }
 function revealBlock(q,run){
@@ -430,17 +485,17 @@ function revealBlock(q,run){
     if(mine().indexOf(pid)>=0){var i=secretIndex(q,pid);
       h+='<div class="secret"><p><strong>'+esc(pname(pid))+', read yours out loud:</strong></p><p class="note">'+esc(pool[i])+'</p><div class="row"><button class="btn sm" data-act="reveal" data-k="'+pid+'" data-v="1">I pulled it off</button><button class="btn sm ghost" data-act="reveal" data-k="'+pid+'" data-v="0">Didn\'t manage it</button></div></div>';
     } else {
-      h+='<div class="chal"><p>Waiting for <strong>'+esc(pname(pid))+'</strong> to reveal on their phone.</p><details><summary class="small" style="cursor:pointer">Their phone can\'t save? Enter it here</summary><div class="stack" style="margin-top:8px"><select id="rev-'+pid+'">'+pool.map(function(t,i){return '<option value="'+i+'">'+esc(t)+'</option>'}).join("")+'</select><div class="row"><button class="btn sm" data-act="revealFor" data-k="'+pid+'" data-v="1">They pulled it off</button><button class="btn sm ghost" data-act="revealFor" data-k="'+pid+'" data-v="0">They didn\'t</button></div></div></details></div>';
+      h+='<div class="chal"><p>Waiting for <strong>'+esc(pname(pid))+'</strong> to reveal on their phone.</p><details'+dOpen("rev:"+pid)+'><summary class="small" style="cursor:pointer">Their phone isn\'t here? Enter it for them</summary><div class="stack" style="margin-top:8px"><select id="rev-'+pid+'">'+pool.map(function(t,i){return '<option value="'+i+'">'+esc(t)+'</option>'}).join("")+'</select><div class="row"><button class="btn sm" data-act="revealFor" data-k="'+pid+'" data-v="1">They pulled it off</button><button class="btn sm ghost" data-act="revealFor" data-k="'+pid+'" data-v="0">They didn\'t</button></div></div></details></div>';
     }
   });
   return h+'</section>';
 }
 function photoBlock(q,run,editable){
-  var list=S.photos[q.id];
+  var list=S.photos[q.id]||(S.photosLoaded?[]:null);
   var h='<section class="page"><p class="eyebrow">Photos</p>';
-  if(!list){loadPhotos(q.id);h+='<p class="faded">Looking for photos…</p>'}
+  if(!list){h+='<p class="faded">Looking for photos…</p>'}
   else if(!list.length)h+='<p class="faded">No photos yet.'+(editable?" Add the team photo, the weirdest thing you saw, the dessert.":"")+'</p>';
-  else h+='<div class="photos">'+list.map(function(p){return '<figure><img src="'+esc(p.data)+'" alt="Trip photo added by '+esc(pname(p.by))+'"><figcaption><span>'+esc(pname(p.by))+'</span>'+(editable?'<button data-act="delPhoto" data-k="'+esc(p.id)+'">remove</button>':'')+'</figcaption></figure>'}).join("")+'</div>';
+  else h+='<div class="photos">'+list.map(function(p){return '<figure><img src="'+esc(p.data)+'" alt="Trip photo added by '+esc(pname(p.by))+'"><figcaption><span>'+esc(pname(p.by))+'</span>'+(editable?'<button data-act="delPhoto" data-k="'+esc(p.id)+'">'+(S.confirm==="del:"+p.id?"tap again":"remove")+'</button>':'')+'</figcaption></figure>'}).join("")+'</div>';
   if(editable)h+='<div class="row"><input type="file" id="photoIn" accept="image/*" multiple '+(S.photoBusy?"disabled":"")+' style="max-width:100%">'+(S.photoBusy?'<span class="small faded">Saving…</span>':'')+'</div><p class="small faded">Photos are shrunk before saving so the journal stays light. Keep the originals on your phone.</p>';
   return h+'</section>';
 }
@@ -456,7 +511,8 @@ function homeAgain(q,run){
     '<textarea id="story" data-story="1" placeholder="How did it go?">'+esc(run.story||"")+'</textarea>'+
     '<div class="row"><button class="btn sm ghost" data-act="story" '+(S.storyBusy?"disabled":"")+'>'+(S.storyBusy?"Writing…":(run.story?"Write it again":"Write our adventure log"))+'</button>'+(S.storyErr?'<span class="small" style="color:var(--oxblood)">'+esc(S.storyErr)+'</span>':'')+'</div></section>';
   var need=[];if(!run.checkin)need.push("tick the home check-in");if(!run.boss)need.push("say how the boss went");
-  h+='<section class="page"><p>Sealing the entry pays out XP, gold and loot, and pins this place on your map.</p><div class="row"><button class="btn" data-act="seal" '+(need.length?"disabled":"")+'>Seal this entry</button>'+(need.length?'<span class="small faded">First: '+esc(need.join(", "))+'.</span>':'')+'</div></section>';
+  var pv=computeRewards(q,run);
+  h+='<section class="page"><p>Sealing the entry pays out XP, gold and loot, and pins this place on your map.</p><p class="small faded">Sealed now, it pays '+esc(pname("p1"))+' '+pv.p1.xp+' XP and '+esc(pname("p2"))+' '+pv.p2.xp+' XP'+(run.boss==="win"?", plus boss loot":"")+'.</p><div class="row"><button class="btn" data-act="seal" '+(need.length?"disabled":"")+'>Seal this entry</button>'+(need.length?'<span class="small faded">First: '+esc(need.join(", "))+'.</span>':'')+'</div></section>';
   return h;
 }
 function rewardsBlock(run){
@@ -502,7 +558,10 @@ function viewParty(){
       (left>0?'<p class="note" style="font-size:1.1rem">Level up! '+left+' stat point'+(left===1?"":"s")+' to spend.</p>':'')+'<div class="stat">';
     STATS.forEach(function(s){c+='<span>'+s[1]+'</span><span class="pips"><strong style="min-width:1.5em;text-align:center">'+statOf(p,s[0])+'</strong>'+(left>0?'<button data-act="spend" data-p="'+pid+'" data-k="'+s[0]+'" aria-label="Raise '+s[1]+'">+</button>':'')+'</span>'});
     c+='</div>'+(x.loot.length?'<p class="eyebrow">Loot</p><ul class="plain small">'+x.loot.map(function(l){return '<li>'+esc(l)+'</li>'}).join("")+'</ul>':'<p class="small faded">No loot yet. Bosses drop it.</p>');
-    return c+'</div>'}).join("")+'</div></section>';
+    return c+'</div>'}).join("")+'</div>'+(S.edit?'':'<div><button class="btn sm ghost" data-act="editParty">Change names or classes</button></div>')+'</section>';
+  if(S.edit)h+='<section class="page"><p class="eyebrow">Change names or classes</p><div class="grid2">'+["p1","p2"].map(function(pid){var e=S.edit[pid];
+    return '<div class="stack"><div><label class="small faded" for="en-'+pid+'">Name</label><input type="text" id="en-'+pid+'" maxlength="24" data-ename="'+pid+'" value="'+esc(e.name)+'"></div><div><label class="small faded" for="ec-'+pid+'">Class</label><select id="ec-'+pid+'" data-ecls="'+pid+'">'+Object.keys(CLASSES).map(function(k){return '<option value="'+k+'" '+(e.cls===k?"selected":"")+'>'+esc(CLASSES[k].n)+'</option>'}).join("")+'</select></div></div>'}).join("")+
+    '</div><p class="small faded">XP, gold and loot stay as they are. A new class moves that character\'s class bonus.</p><div class="row"><button class="btn sm" data-act="saveParty">Save</button><button class="btn sm ghost" data-act="cancelEdit">Cancel</button></div></section>';
   var a=achievements();
   h+='<section class="page"><p class="eyebrow">Couple achievements</p>'+(a.length?'<ul class="plain">'+a.map(function(x){return '<li><strong>'+esc(x.n)+'.</strong> '+esc(x.t)+'</li>'}).join("")+'</ul>':'<p class="faded">None yet. The first one comes with your first finished quest.</p>')+'</section>';
   return h;
@@ -569,12 +628,6 @@ function viewCamp(){
 }
 
 /* ---------- photos ---------- */
-function loadPhotos(qid){
-  if(!S.db)return;
-  S.db.collection("photos").where("q","==",qid).get().then(function(s){
-    S.photos[qid]=s.docs.map(function(d){var x=Object.assign({},d.data());x.id=d.id;return x}).sort(function(a,b){return (a.at||0)-(b.at||0)});scheduleRender();
-  }).catch(function(){S.photos[qid]=[];scheduleRender()});
-}
 function shrink(file,max,q){
   return new Promise(function(res,rej){var r=new FileReader();r.onerror=rej;r.onload=function(){var im=new Image();im.onerror=rej;im.onload=function(){
     var k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
@@ -589,7 +642,7 @@ function addPhotos(qid,files){
       return S.db.collection("photos").add({q:qid,by:by,at:Date.now()+i,data:d}).then(function(){
         var run=S.runs[qid]||{};if(run.thumb)return;return shrink(f,160,0.6).then(function(t){return runPatch(qid,{thumb:t})})})})})});
   chain.catch(function(e){if(e&&e.code==="invalid_argument")S.readOnly=true;else S.err=e&&e.code==="quota_exceeded"?"The journal is full. Remove some older photos first.":"A photo couldn't be saved. Try a different one."})
-   .then(function(){S.photoBusy=false;delete S.photos[qid];render()});
+   .then(function(){S.photoBusy=false;render()});
 }
 
 /* ---------- story ---------- */
@@ -643,6 +696,10 @@ function flatReward(xp,gold,why,loot){var o={};["p1","p2"].forEach(function(p){o
 
 /* ---------- events ---------- */
 document.addEventListener("click",function(e){
+  var lb=e.target.closest(".light");if(lb){lb.remove();return}
+  var im=e.target.closest(".photos img");
+  if(im){var bx=document.createElement("div");bx.className="light";bx.setAttribute("role","dialog");bx.setAttribute("aria-label","Photo. Tap to close.");
+    var big=document.createElement("img");big.src=im.src;big.alt=im.alt;bx.appendChild(big);document.body.appendChild(bx);return}
   var tb=e.target.closest("[data-tab]");
   if(tb){S.tab=tb.dataset.tab;lsSet("rq.tab",S.tab);S.confirm="";render();window.scrollTo(0,0);return}
   var el=e.target.closest("[data-act]");if(!el||el.tagName==="INPUT")return;
@@ -657,6 +714,10 @@ document.addEventListener("click",function(e){
   else if(act==="triv"){S.triv[k]=true;render()}
   else if(act==="stat"){var d2=S.draft[el.dataset.p],cur=(d2.stats[k]||0)+(+v);if(cur<0||(+v>0&&spent(d2)>=START_POINTS))return;d2.stats[k]=cur;render()}
   else if(act==="found"){var b={created:Date.now()};["p1","p2"].forEach(function(p){b[p]={name:S.draft[p].name.trim().slice(0,24),cls:S.draft[p].cls,stats:S.draft[p].stats}});partySet(b);if(!S.who){S.who="both";lsSet("rq.who","both")}}
+  else if(act==="editParty"){S.edit={};["p1","p2"].forEach(function(p){var c=S.party[p]||{};S.edit[p]={name:c.name||"",cls:c.cls||"pathfinder"}});render()}
+  else if(act==="cancelEdit"){S.edit=null;render()}
+  else if(act==="saveParty"){var pe={};["p1","p2"].forEach(function(p){var nm=($("en-"+p)||{}).value,cs=($("ec-"+p)||{}).value;
+      pe[p]={name:String(nm||"").trim().slice(0,24)||pname(p),cls:CLASSES[cs]?cs:S.edit[p].cls}});S.edit=null;partyPatch(pe);render()}
   else if(act==="spend"){var pid=el.dataset.p,p=S.party[pid]||{},pt={};pt[pid]={stats:{}};pt[pid].stats[k]=((p.stats&&p.stats[k])||0)+1;partyPatch(pt)}
   else if(!q)return;
   else if(act==="accept"){var mods=(q.modifiers||[]).filter(function(m){return !m.night||q.nightOk===true});
@@ -672,13 +733,15 @@ document.addEventListener("click",function(e){
     if(act==="reveal")idx=secretIndex(q,k);else{var sel=$("rev-"+k);idx=sel?+sel.value:0}
     var rv={reveals:{}};rv.reveals[k]={text:pool[idx]||"",ok:v==="1"};runPatch(q.id,rv)}
   else if(act==="story"){var ta=$("story");if(ta&&ta.value!==(run.story||""))run=Object.assign({},run,{story:ta.value});writeStory(q,run)}
-  else if(act==="seal"){seal(q,run);window.scrollTo(0,0)}
+  else if(act==="seal"){var ts=$("story");if(ts&&ts.value.trim()&&ts.value!==(run.story||""))run=Object.assign({},run,{story:ts.value.slice(0,4000)});seal(q,run);window.scrollTo(0,0)}
   else if(act==="delPhoto"){if(S.confirm!=="del:"+k){S.confirm="del:"+k;el.textContent="tap again";return}
-    S.confirm="";S.db.doc("photos/"+k).delete().then(function(){delete S.photos[q.id];render()}).catch(function(){S.err="That photo couldn't be removed.";render()})}
+    S.confirm="";S.db.doc("photos/"+k).delete().then(function(){render()}).catch(function(){S.err="That photo couldn't be removed.";render()})}
 });
 document.addEventListener("change",function(e){
   var t=e.target,q=currentQuest();
   if(t.dataset.cls){if(S.draft){S.draft[t.dataset.cls].cls=t.value;render()}return}
+  if(t.dataset.ecls){if(S.edit)S.edit[t.dataset.ecls].cls=t.value;return}
+  if(t.dataset.ename)return;
   if(t.id==="photoIn"&&q){addPhotos(q.id,t.files);return}
   if(!q)return;var run=S.runs[q.id]||{},act=t.dataset.act,k=t.dataset.k,o;
   if(act==="pre"){o={pre:{}};o.pre[k]=t.checked;runPatch(q.id,o)}
@@ -689,10 +752,15 @@ document.addEventListener("change",function(e){
   else if(t.dataset.story){if(t.value!==(run.story||""))runPatch(q.id,{story:t.value.slice(0,4000)})}
 });
 document.addEventListener("input",function(e){var t=e.target;
+  if(t.dataset.ename&&S.edit){S.edit[t.dataset.ename].name=t.value;return}
   if(t.dataset.name&&S.draft){S.draft[t.dataset.name].name=t.value;
+    var sl=t.closest(".row")&&t.closest(".row").querySelector(".seal");if(sl)sl.textContent=(t.value.trim()||"?").charAt(0).toUpperCase();
     var b=document.querySelector('[data-act="found"]');if(b){var d=S.draft;b.disabled=!(d.p1.name.trim()&&d.p2.name.trim()&&spent(d.p1)===START_POINTS&&spent(d.p2)===START_POINTS)}}
 });
-document.addEventListener("toggle",function(e){var d=e.target;if(d.dataset&&d.dataset.entry){var was=S.openEntry===d.dataset.entry;if(d.open&&!was){S.openEntry=d.dataset.entry;render()}else if(!d.open&&was){S.openEntry=null;render()}}},true);
+document.addEventListener("click",function(){if(queued&&!pressing){queued=false;render()}});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){var lb=document.querySelector(".light");if(lb)lb.remove()}});
+document.addEventListener("toggle",function(e){var d=e.target;if(d.dataset&&d.dataset.d){S.open[d.dataset.d]=d.open;return}
+  if(d.dataset&&d.dataset.entry){var was=S.openEntry===d.dataset.entry;if(d.open&&!was){S.openEntry=d.dataset.entry;render()}else if(!d.open&&was){S.openEntry=null;render()}}},true);
 
 render();boot();
 })();
