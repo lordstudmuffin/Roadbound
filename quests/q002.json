@@ -1,0 +1,367 @@
+{
+  "number": 2,
+  "season": 1,
+  "issued": "2026-11-16",
+  "title": "The Salt Sea Herd",
+  "tagline": "Seven miles of road across the Great Salt Lake, and an island of bison at the end of it.",
+  "why": "Antelope Island is a 28,022-acre state park in the middle of the Great Salt Lake, reached only by a seven-mile causeway from Syracuse. Twelve bison were brought here in 1893, and their descendants are now one of the largest and oldest public herds in the country. This year's roundup involved nearly 800 of them. The island got its name in 1845, when John C. Frémont and Kit Carson shot a pronghorn antelope here and named the place in thanks for the meat. A brand-new visitor center opened in October, six times the size of the old one, with a tank of live brine shrimp and a 200-seat theater. In late November the island is quiet, the grass is gold, and the lake light is strange and lovely. It is about half an hour from home.",
+  "bestDays": "Saturday, Nov 21 is the pick: mostly sunny after a wet week. Sunday, Nov 22 has a chance of rain. The visitor center is open every day, 9 AM to 5 PM. The park's facilities are closed on Thanksgiving (Nov 26) and Christmas. If Saturday morning shows snow or ice on the roads, save this quest for a drier day.",
+  "nightOk": false,
+  "place": {
+    "name": "Antelope Island State Park",
+    "short": "Antelope Island",
+    "address": "4528 W 1700 S, Syracuse, UT 84075 (the entrance gate, at the west end of Antelope Drive)",
+    "lat": 41.060026,
+    "lon": -112.237404,
+    "hours": "Park: open year-round, 6 AM to 8 PM, per the park's own page (an older brochure says 10 PM). Visitor center: 9 AM to 5 PM daily. Closed Thanksgiving and Christmas.",
+    "cost": "$15 per vehicle (up to 8 people), paid at the entrance gate or online at parkspass.utah.gov",
+    "parking": "Free with entry. There is parking at the visitor center, and a parking area partway up Buffalo Point where the short trail starts."
+  },
+  "drive": {
+    "summary": "About 25 miles and 35 to 40 minutes each way (my estimate). I-15 south to Exit 332, then west on Antelope Drive for 7 miles to the entrance gate, then 7 more miles across the causeway. Freeway, a main road and the paved park road. This is your first quest past the 10-mile mark, and still inside 30."
+  },
+  "conditions": {
+    "checked": "Nov 16, 2026",
+    "forecast": "National Weather Service point forecast for the island (updated 11:31 PM, Nov 15): rain Tuesday and Thursday, rain and snow on Friday with a low near 27°F Friday night, then Saturday Nov 21 mostly sunny with a high near 42°F. Sunday Nov 22 partly sunny, chance of rain, high near 43°F. No weather alerts listed. This is five days out, so check again Saturday morning.",
+    "roads": "The park's conditions page (updated Nov 15) lists no road or causeway closures; the only closure is the boat ramp. UDOT's Region One page has no closure notice for Nov 20 to 22 yet; its latest covers the weekend of Nov 5. After Friday's rain and snow and a freezing night, the causeway can be icy early, which is why this plan starts after noon. Look at UDOT Traffic before you leave.",
+    "sunset": "5:12 PM on Sat Nov 21, last light 5:41 PM. 5:11 PM on Sun Nov 22. (Times for Syracuse.)",
+    "car": "Fine for a Sentra in dry weather. The causeway and the island roads on this quest are paved and flat, and a travel guide rates the surface good for all vehicles. No dirt or gravel is needed. Skip the unpaved road south of the ranch."
+  },
+  "plan": {
+    "steps": [
+      {
+        "time": "12:30 PM",
+        "text": "Leave Riverdale with a full tank, and bring water and snacks. There is no restaurant on the island this time of year. I-15 south to Exit 332, then west on Antelope Drive."
+      },
+      {
+        "time": "12:55 PM",
+        "text": "Entrance gate. Pay $15 for the car. Cross the causeway, seven miles of road with lake on both sides."
+      },
+      {
+        "time": "1:10 PM",
+        "text": "The new visitor center. Find the brine shrimp tank, the island map and the bison statue. The lake film is 45 minutes if you want to sit somewhere warm."
+      },
+      {
+        "time": "2:30 PM",
+        "text": "Slow drive around the north end of the island, looking for bison from inside the car. Stop at the Ladyfinger Point trail, a quarter-mile walk to an overlook."
+      },
+      {
+        "time": "3:15 PM",
+        "text": "Buffalo Point. A 0.3-mile trail climbs from the parking area to a flat top with lake views on both sides. If the trail is icy, or a bison is anywhere near it, the view from the parking area counts."
+      },
+      {
+        "time": "4:30 PM",
+        "text": "Back to the car while the light is still gold. Start for the causeway by 4:40 PM."
+      },
+      {
+        "time": "5:00 PM",
+        "text": "Off the causeway and back on Antelope Drive in Syracuse before the 5:12 PM sunset. The passenger gets the sunset in the mirror."
+      },
+      {
+        "time": "5:15 PM",
+        "text": "Rest stop: Morty's Cafe in Syracuse for burgers and shakes."
+      },
+      {
+        "time": "6:15 PM",
+        "text": "Head home on I-15 north."
+      },
+      {
+        "time": "6:45 PM",
+        "text": "Home. Check in with your trusted person, then reveal secrets and seal the entry."
+      }
+    ]
+  },
+  "restStop": {
+    "name": "Morty's Cafe",
+    "address": "1863 W 700 S, Suite 3, Syracuse, UT 84075",
+    "what": "A local burger cafe: burgers, veggie burgers, fries, salads, sandwiches and shakes.",
+    "hours": "Monday to Thursday 10 AM to 9 PM, Friday and Saturday 10 AM to 10 PM, Sunday 10 AM to 9 PM, per the cafe's own page. Phone 801-820-5521.",
+    "backup": "The Pizza Factory, 725 W 1700 S, Syracuse, right on Antelope Drive on your way back to the freeway. Known for hot bread twists; the cinnamon sugar twist with sweet cream is listed at $3.75. Its listing says it opens at 11 AM but gives no closing time, so phone 801-825-3194 first.",
+    "map": "Morty's Cafe, 1863 W 700 S, Syracuse, UT"
+  },
+  "skySpot": {
+    "kind": "Golden hour view",
+    "name": "Buffalo Point",
+    "address": "Buffalo Point, Antelope Island State Park, Syracuse, UT",
+    "notes": "A low granite hill at the edge of the island. The road climbs partway up to a parking area, and a 0.3-mile trail finishes the climb to a flat top with views across nearly all of the Great Salt Lake. Be here for the low gold light from about 3:30 PM, then leave the island by 4:40 PM so you are back in town before dark. The island is an International Dark Sky Park, but it is a remote place, so there is no stargazing on this quest.",
+    "map": "Buffalo Point, Antelope Island State Park, UT"
+  },
+  "costs": {
+    "gas": "About $7. Roughly 60 miles in all at the Sentra's 33 mpg combined, with Ogden's average at $4.01 a gallon on Nov 15.",
+    "food": "About $30 to $35 for two burgers and two shakes. This is my estimate.",
+    "entry": "$15 for the car",
+    "total": "About $52 to $57 for two",
+    "notes": "I could not find Morty's current prices, or whether the visitor center's theater charges for the film. If it does, treat the film as optional."
+  },
+  "safety": {
+    "cell": "I could not find a source on cell coverage for the island or the causeway. Assume it may be weak or drop out once you leave Syracuse, and send your trusted person a message at the entrance gate before you cross. The visitor center is staffed from 9 AM to 5 PM. Park phone: 801-725-9263.",
+    "gas": "Maverik, 1991 W 1700 S, Syracuse. Open 24 hours, on Antelope Drive, the last stretch of town before the gate. I found no fuel listed on the island, so fill up before you cross.",
+    "hospital": "Holy Cross Hospital - Davis, Emergency Department, 1600 W Antelope Drive, Layton. 24/7 emergency care, on the same road you drive in on. 801-807-7175.",
+    "backBy": "7:00 PM",
+    "notes": "Bison are wild and fast. Watch them from inside the car or from well back, at least 75 feet, and never walk toward one. If one is near a trail, turn around; the park says to back away slowly. Stay on marked trails and stay out of the lake. Be off the island by 4:45 PM so the causeway is behind you before dark.",
+    "gasMap": "Maverik, 1991 W 1700 S, Syracuse, UT",
+    "hospitalMap": "Holy Cross Hospital - Davis, 1600 W Antelope Drive, Layton, UT"
+  },
+  "modifiers": [
+    {
+      "id": "budget",
+      "name": "Budget run",
+      "text": "Food under $25 for the two of you. Park entry and gas don't count."
+    },
+    {
+      "id": "passenger-dj",
+      "name": "Passenger's playlist only",
+      "text": "Whoever isn't driving picks every song, both ways. The driver's hands stay on the wheel."
+    },
+    {
+      "id": "dress",
+      "name": "Dress for the vibe",
+      "text": "Arrive dressed as frontier explorers, park rangers, or two people who badly underestimated the wind."
+    },
+    {
+      "id": "expedition-log",
+      "name": "Expedition log",
+      "text": "The passenger keeps a spoken captain's log of the crossing, starting at the entrance gate. Grand tone required."
+    },
+    {
+      "id": "naming-rights",
+      "name": "Naming rights",
+      "text": "Every animal you spot gets a full name and a job title. Take turns. The names stick for the whole trip."
+    }
+  ],
+  "challenges": {
+    "coop": [
+      {
+        "id": "c1",
+        "title": "Proof of the crossing",
+        "text": "Take a team photo with the Great Salt Lake behind you, both of you in frame. The visitor center deck works well.",
+        "stat": "charm"
+      },
+      {
+        "id": "c2",
+        "title": "The herd",
+        "text": "Spot a live bison together from inside the car. Whoever is the passenger points; the driver keeps driving. No getting closer on foot.",
+        "stat": "eye"
+      },
+      {
+        "id": "c3",
+        "title": "Smallest beast on the island",
+        "text": "Find the tank of live brine shrimp in the visitor center, and each give one shrimp a name.",
+        "stat": "nerve"
+      },
+      {
+        "id": "c4",
+        "title": "Explorer's supper",
+        "text": "At the rest stop, share one thing neither of you has ordered before.",
+        "stat": "snack"
+      }
+    ],
+    "duels": [
+      {
+        "id": "d1",
+        "title": "First sighting",
+        "text": "From the passenger seat or on foot beside each other, who calls the first wild animal of the day? Birds count. The driver may shout but not look away from the road.",
+        "stat": "eye"
+      },
+      {
+        "id": "d2",
+        "title": "Best lake photo",
+        "text": "Each of you takes one photo of the lake, the light or the island. Text both to your trusted person without saying whose is whose, and let them pick.",
+        "stat": "charm"
+      },
+      {
+        "id": "d3",
+        "title": "Island trivia",
+        "text": "Three questions each, no looking things up. Signs and exhibits are fair game. Most right answers wins.",
+        "stat": "nerve",
+        "trivia": [
+          {
+            "q": "How many bison were brought to the island in 1893?",
+            "a": "Twelve."
+          },
+          {
+            "q": "Which two explorers named the island in 1845, after shooting a pronghorn antelope here?",
+            "a": "John C. Frémont and Kit Carson."
+          },
+          {
+            "q": "What is the island's highest point called?",
+            "a": "Frary Peak."
+          },
+          {
+            "q": "In what year was the island named an International Dark Sky Park?",
+            "a": "2017."
+          },
+          {
+            "q": "About how many times saltier than the ocean is the Great Salt Lake?",
+            "a": "About five times."
+          },
+          {
+            "q": "About how many miles long is the causeway to the island?",
+            "a": "About seven (7.2 by Davis County's count)."
+          }
+        ]
+      }
+    ],
+    "secrets": [
+      "Get your partner to laugh out loud somewhere on the causeway.",
+      "Get your partner to say the word \"majestic\" without asking them to.",
+      "Take a candid photo of your partner looking out at the lake, and don't show them until you're home.",
+      "Get your partner to do a bison impression without telling them it's your mission.",
+      "Hold your partner's hand at three different viewpoints without it seeming planned.",
+      "Slip the word \"salty\" into normal conversation three times before you get home.",
+      "Warm your partner's hands at least once without being asked.",
+      "Get your partner to name a bison after someone you both know."
+    ],
+    "boss": {
+      "name": "The Keeper of the Salt Sea",
+      "text": "Chart the north end of the island together before you leave at 4:40 PM. Tick each part when you're both there. All six ticks beat the boss. If ice or a bison blocks a trail, the nearest safe view counts.",
+      "loot": "Horn of the Salt Sea (imaginary, since nothing leaves the park)",
+      "parts": [
+        "The causeway, crossed",
+        "The brine shrimp tank in the visitor center",
+        "The island map that shows where the herds gather",
+        "The bison statue looking out over the lake",
+        "Ladyfinger Point overlook",
+        "Buffalo Point, top or parking-area view"
+      ]
+    }
+  },
+  "achievement": {
+    "name": "Crossed the Salt Sea",
+    "text": "Drove seven miles across the Great Salt Lake to stand among the bison of Antelope Island."
+  },
+  "unverified": [
+    "Drive distance and times. The 25 miles and 35 to 40 minutes are my estimate, so let your maps app confirm.",
+    "Cell coverage on the causeway and the island. I found no source, so plan as if it may drop out.",
+    "Whether the film in the visitor center theater costs extra, and Morty's menu prices.",
+    "The Pizza Factory's closing time.",
+    "Park closing time: the park's own page says 8 PM and an older brochure says 10 PM. Neither matters for this plan, which leaves before sunset.",
+    "That bison will be near the road that day. One guide says the herd is kept in pens near park headquarters in winter, so a sighting is likely but not promised.",
+    "Saturday's weather and road surface. The forecast is five days out and follows a day of rain and snow, and UDOT had posted nothing yet for that weekend.",
+    "The map pin uses the park's own coordinates, which may sit a short way from the visitor center door."
+  ],
+  "safetyCheck": [
+    {
+      "rule": 1,
+      "note": "Every challenge, duel and secret objective is done side by side or in the same car. None needs you apart."
+    },
+    {
+      "rule": 2,
+      "note": "The island is a remote spot, so this is a daylight quest. The plan leaves the island by 4:40 PM and has you back on Antelope Drive in Syracuse before the 5:12 PM sunset."
+    },
+    {
+      "rule": 3,
+      "note": "No night modifier is in this quest's pool and nightOk is false. The only after-dark stop is an open cafe in town."
+    },
+    {
+      "rule": 4,
+      "note": "A staffed state park that is open to the public, its visitor center and marked trails, and an open cafe. Nothing abandoned, private or closed."
+    },
+    {
+      "rule": 5,
+      "note": "Freeway, a main road, a paved causeway and paved park roads, with no closures listed on Nov 16. Saturday's forecast is dry and sunny, but it follows rain and snow on Friday, so the quest tells you to check that morning and wait for another day if there is snow or ice."
+    },
+    {
+      "rule": 6,
+      "note": "Safety card included: cell (unconfirmed, with a message at the gate), 24-hour gas, a 24/7 emergency department, and a 7:00 PM back-by time."
+    },
+    {
+      "rule": 7,
+      "note": "The app won't let you set out until you tick the location-share reminder, and asks for a home check-in at the end. This quest adds a message at the gate."
+    },
+    {
+      "rule": 8,
+      "note": "The winter checklist must be ticked before setting out. It matters more than usual here: there is no food or fuel on the island."
+    },
+    {
+      "rule": 9,
+      "note": "Veto and Bail buttons are always available. Both pay a reward and neither costs anything. The boss accepts the nearest safe view, so nothing pushes you onto an icy trail or toward a bison."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Antelope Island State Park: main page (hours, phone, roundup)",
+      "url": "https://stateparks.utah.gov/parks/antelope-island/"
+    },
+    {
+      "label": "Antelope Island: current conditions",
+      "url": "https://stateparks.utah.gov/parks/antelope-island/current-conditions"
+    },
+    {
+      "label": "Antelope Island: park fees",
+      "url": "https://stateparks.utah.gov/parks/antelope-island/park-fees/"
+    },
+    {
+      "label": "Antelope Island: directions and address",
+      "url": "https://stateparks.utah.gov/parks/antelope-island/directions/"
+    },
+    {
+      "label": "Antelope Island: things to do (dark sky, grill season)",
+      "url": "https://stateparks.utah.gov/parks/antelope-island/things-to-do/"
+    },
+    {
+      "label": "Utah State Parks: new visitor center and theater open",
+      "url": "https://stateparks.utah.gov/uncategorized/antelope-island-opens-new-visitor-center-and-theater/"
+    },
+    {
+      "label": "Standard-Examiner: expanded visitor center (hours, exhibits)",
+      "url": "https://www.standard.net/lifestyle/recreation/2026/oct/02/antelope-island-state-park-celebrates-expanded-visitor-center/"
+    },
+    {
+      "label": "Park brochure (acres, 1893 bison, trail lengths, bison safety)",
+      "url": "https://stateparks.utah.gov/wp-content/uploads/sites/13/2023/08/AISP_Brochure_2023-web.pdf"
+    },
+    {
+      "label": "Discover Davis brochure (causeway length, lake salinity)",
+      "url": "https://discoverdavis.com/wp-content/uploads/2021/10/Davis-AISP-Brochure-Proof-5-10-2021.pdf"
+    },
+    {
+      "label": "Wikipedia: Antelope Island (name, Frary Peak, bison)",
+      "url": "https://en.wikipedia.org/wiki/Antelope_Island"
+    },
+    {
+      "label": "The American Southwest: Antelope Island (paved road, Buffalo Point)",
+      "url": "https://www.americansouthwest.net/utah/antelope-island/state-park.html"
+    },
+    {
+      "label": "Discover Utah: Antelope Island guide (road surface, bison distance, winter)",
+      "url": "https://discoverutah.info/destinations/antelope-island/"
+    },
+    {
+      "label": "Utah's Adventure Family: Antelope Island (Ladyfinger trail, grill season)",
+      "url": "https://www.utahsadventurefamily.com/antelope-island-state-park-2/"
+    },
+    {
+      "label": "Morty's Cafe, Syracuse",
+      "url": "https://mortys-cafe-jkuj.squarespace.com/syracuse"
+    },
+    {
+      "label": "The Pizza Factory, Syracuse (menu listing)",
+      "url": "https://slicelife.com/restaurants/ut/syracuse/84015/the-pizza-factory-725-w-1700-s-clearfield/menu"
+    },
+    {
+      "label": "Maverik, 1991 W 1700 S, Syracuse",
+      "url": "https://locations.maverik.com/ut/syracuse/1991-w-1700-s"
+    },
+    {
+      "label": "Holy Cross Hospital - Davis, Emergency Department",
+      "url": "https://www.mountain.commonspirit.org/location/holy-cross-hospital-davis/emergency-department"
+    },
+    {
+      "label": "National Weather Service point forecast, Antelope Island",
+      "url": "https://forecast.weather.gov/MapClick.php?lat=41.0600&lon=-112.2374"
+    },
+    {
+      "label": "UDOT Region One news",
+      "url": "https://connect.udot.utah.gov/category/region-one/"
+    },
+    {
+      "label": "Sunset times, Syracuse",
+      "url": "https://sunrisesunset.io/us/utah/syracuse/"
+    },
+    {
+      "label": "AAA gas prices, Utah",
+      "url": "https://gasprices.aaa.com/?state=UT"
+    }
+  ]
+}
