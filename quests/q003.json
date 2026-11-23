@@ -1,0 +1,372 @@
+{
+  "number": 3,
+  "season": 1,
+  "issued": "2026-11-23",
+  "title": "The Gateway of Brigham",
+  "tagline": "A 66-foot neon arch has welcomed travellers to Main Street since 1928. Walk under it, then eat in a cafe that opened in 1921.",
+  "why": "Brigham City's Main Street is spanned by a steel welcome arch that went up in September 1928, paid for with $2,400 of citizen donations and lit with more than 350 electric lights. It announces the town as the gateway to the world's greatest bird refuge, and was said to be the largest sign in Utah at the time. A few doors north, the Idle Isle Cafe has been serving since May 1921, with a marble-and-onyx soda fountain counter and hand-crafted wooden booths. It shut for just over a year and reopened this July under a new family. Three blocks west, the free Brigham City Museum of Art & History tells the town's story. It is a small town with odd, proud details, and it is your first quest to the north.",
+  "bestDays": "Saturday, Nov 28 is the pick, and really the only day this weekend: the museum's Saturday hours are 1 PM to 5 PM and it lists no Sunday hours, and the Idle Isle Cafe is closed Sundays. Any Tuesday to Friday also works (museum 10 AM to 5 PM). Thursday, Nov 26 is Thanksgiving, so expect things shut. If Saturday morning shows snow or ice on I-15, save this quest for a drier day.",
+  "nightOk": false,
+  "place": {
+    "name": "Brigham City Welcome Arch and Historic Main Street",
+    "short": "the Brigham City arch",
+    "address": "Main Street between Forest Street and 100 South, Brigham City, UT 84302 (a roadside-sign guide maps the arch at 58 S Main St)",
+    "lat": 41.5097,
+    "lon": -112.0155,
+    "hours": "The arch and the street are public and always there. Brigham City Museum of Art & History, 24 North 300 West (lower level of the Community Center, corner of Forest Street and 3rd West): Tuesday to Friday 10 AM to 5 PM, Saturday 1 PM to 5 PM. No Sunday or Monday hours are listed.",
+    "cost": "Free. The museum's page says \"Admission is free\", and the arch is a street sign.",
+    "parking": "Neither the museum's page nor the county's arch page describes parking. Phone the museum at (435) 226-1439 if you want to ask before you go."
+  },
+  "drive": {
+    "summary": "About 22 miles and 25 to 30 minutes each way (my estimate). I-15 north to Exit 363, which is Forest Street, then east on Forest Street into town. The museum is at Forest Street and 300 West, and Main Street is about three blocks further east. Freeway and city streets only. Let your maps app pick the exit it prefers."
+  },
+  "conditions": {
+    "checked": "Nov 23, 2026",
+    "forecast": "National Weather Service point forecast (updated 11:31 PM, Nov 22) for a spot west of Corinne, about 20 miles from Brigham City, which was the nearest point that would load: Friday Nov 27 mostly cloudy, high near 41°F, a slight chance of rain after 11 PM. Saturday Nov 28 mostly cloudy with a slight chance of rain, high near 43°F, low around 34°F. Sunday Nov 29 much the same, high near 42°F. No snow is mentioned for Thursday to Sunday and no alerts are listed. This is five days out, so check again Saturday morning.",
+    "roads": "UDOT's Region One page shows no closure notice for I-15 between Ogden and Brigham City for Nov 27 to 29; its latest posts are from Nov 9 and Nov 5. UDOT's I-15 Brigham City to Honeyville widening is still in design, with construction not expected until spring 2027, so there is no work zone. That page is a news list, not a live map, so look at UDOT Traffic before you leave. Nights are near freezing, which is why this plan starts after noon.",
+    "sunset": "5:07 PM on Sat Nov 28, last light 5:37 PM. The same on Sun Nov 29. (Times for Brigham City.)",
+    "car": "Fine for a Sentra. Interstate and town streets, no canyon, dirt or gravel. With only a slight chance of rain and highs above 40°F, nothing in the forecast calls for chains or four-wheel drive."
+  },
+  "plan": {
+    "steps": [
+      {
+        "time": "12:45 PM",
+        "text": "Leave Riverdale. I-15 north to Brigham City."
+      },
+      {
+        "time": "1:15 PM",
+        "text": "Arrive at the Brigham City Museum of Art & History, 24 North 300 West. It opens at 1 PM on Saturdays and is free."
+      },
+      {
+        "time": "1:15–2:30",
+        "text": "The museum: the permanent history exhibition and whatever is in the changing gallery. The trivia duel gets easier in here."
+      },
+      {
+        "time": "2:30 PM",
+        "text": "Move the car, or walk together, about three blocks east to Main Street."
+      },
+      {
+        "time": "2:40–3:45",
+        "text": "Main Street on foot, side by side: the arch, the old storefronts, and the boss hunt. Photos of the arch from the sidewalk only."
+      },
+      {
+        "time": "3:45 PM",
+        "text": "Rest stop: an early dinner at the Idle Isle Cafe, 24 South Main."
+      },
+      {
+        "time": "5:00 PM",
+        "text": "Step back out to the arch for sunset at 5:07 PM."
+      },
+      {
+        "time": "5:20 PM",
+        "text": "Head home on I-15 while there is still light in the sky."
+      },
+      {
+        "time": "5:55 PM",
+        "text": "Home. Check in with your trusted person, then reveal secrets and seal the entry."
+      }
+    ]
+  },
+  "restStop": {
+    "name": "Idle Isle Cafe",
+    "address": "24 South Main Street, Brigham City, UT 84302",
+    "what": "A 1921 cafe with a marble-and-onyx soda fountain counter, hand-crafted wooden booths and old Coca-Cola dispensers. A 2023 newspaper write-up names pot roast, chicken fried steak and house-made Idleberry pie, with Farr's and Aggie ice cream. The menu may have changed since the new owners reopened it in July 2026.",
+    "hours": "Winter hours on the cafe's own site: Monday, Tuesday and Thursday 11 AM to 7 PM, Wednesday 11 AM to 3 PM, Friday and Saturday 11 AM to 8 PM, closed Sunday. Phone 435-734-2468.",
+    "backup": "Peach City, 306 North Main Street, a drive-in founded in 1937 and known for 26-ounce malts. I found no current hours for it, so phone 435-723-3923 first. For sweets, Idle Isle Fine Candy is at 41 South Main, almost across from the cafe; I found no hours for it either.",
+    "map": "Idle Isle Cafe, 24 South Main Street, Brigham City, UT"
+  },
+  "skySpot": {
+    "kind": "Sunset under the arch",
+    "name": "The Brigham City Welcome Arch",
+    "address": "Main Street between Forest Street and 100 South, Brigham City, UT",
+    "notes": "Sunset is at 5:07 PM. Stand on the sidewalk outside the cafe and watch the sky go behind the sign. The arch was built with more than 350 lights and rebuilt in 1984 with new neon, but I could not confirm that it is lit every evening now, so treat a glowing arch as a bonus. This is the middle of town beside open businesses, so a few minutes at dusk is fine. No stargazing on this quest.",
+    "map": "Brigham City Arch, Main Street, Brigham City, UT"
+  },
+  "costs": {
+    "gas": "About $5. Roughly 45 miles round trip (my estimate) at the Sentra's 33 mpg combined, with the Ogden average at $3.76 a gallon on Nov 22.",
+    "food": "About $30 to $45 for an early dinner for two with a shared dessert. This is my estimate from a 2023 price range of $7 to $21 a dish.",
+    "entry": "Free",
+    "total": "About $35 to $50 for two",
+    "notes": "The food figure is an estimate. The cafe's site showed no prices, and the 2023 range is from before the new owners."
+  },
+  "safety": {
+    "cell": "The whole trip is on the I-15 corridor and inside Brigham City, so normal service is expected and I know of no dead zones. I did not check your carrier's coverage map.",
+    "gas": "Maverik, 2241 S Highway 89, at the south end of Brigham City. A listing shows fuel available around the clock. The round trip uses about a gallon and a half.",
+    "hospital": "Brigham City Community Hospital, 950 S Medical Dr, Brigham City. Its emergency care is open 24/7, 365 days a year. (435) 734-9471.",
+    "backBy": "6:30 PM",
+    "notes": "Main Street is a working road. Cross only at crosswalks, and take arch photos from the sidewalk, never from the roadway. Stay together the whole time. If rain turns icy, call it and go home; bailing still pays.",
+    "gasMap": "Maverik, 2241 S Highway 89, Brigham City, UT",
+    "hospitalMap": "Brigham City Community Hospital, 950 S Medical Dr, Brigham City, UT"
+  },
+  "modifiers": [
+    {
+      "id": "budget",
+      "name": "Budget run",
+      "text": "Dinner under $30 for the two of you. Gas doesn't count."
+    },
+    {
+      "id": "passenger-dj",
+      "name": "Passenger's playlist only",
+      "text": "Whoever isn't driving picks every song, both ways. The driver's hands stay on the wheel."
+    },
+    {
+      "id": "dress",
+      "name": "Dress for the vibe",
+      "text": "Arrive dressed for 1928: motoring tourists, soda jerks, or two people who heard there was a very large sign."
+    },
+    {
+      "id": "town-criers",
+      "name": "Town criers",
+      "text": "Each time you pass under or beside the arch, one of you quietly announces the other's arrival with a grand title. Take turns. Indoor voices."
+    },
+    {
+      "id": "time-travellers",
+      "name": "Time travellers",
+      "text": "Inside the cafe, talk as if it is still 1921 until the food arrives. Phones are \"pocket telegraphs\"."
+    }
+  ],
+  "challenges": {
+    "coop": [
+      {
+        "id": "c1",
+        "title": "Under the gateway",
+        "text": "Take a team photo with the whole arch in frame, both of you in it, from the sidewalk.",
+        "stat": "charm"
+      },
+      {
+        "id": "c2",
+        "title": "Read the sign",
+        "text": "My sources disagree on the arch's exact words. Read it together, out loud, and settle it for the record.",
+        "stat": "eye"
+      },
+      {
+        "id": "c3",
+        "title": "Curators for a day",
+        "text": "In the museum, each of you picks the one object you would take home for the other, and explains why. Nothing actually leaves the museum.",
+        "stat": "nerve"
+      },
+      {
+        "id": "c4",
+        "title": "A century of dessert",
+        "text": "At the Idle Isle, share one dessert neither of you has had before. Idleberry pie counts if it is on the menu.",
+        "stat": "snack"
+      }
+    ],
+    "duels": [
+      {
+        "id": "d1",
+        "title": "Guess the year",
+        "text": "At five old things, in the museum or on Main Street, each of you guesses the year before reading the label or plaque. Closest wins the round. Best of five.",
+        "stat": "eye"
+      },
+      {
+        "id": "d2",
+        "title": "Best arch photo",
+        "text": "Each of you takes one photo of the arch from the sidewalk. Text both to your trusted person without saying whose is whose, and let them pick.",
+        "stat": "charm"
+      },
+      {
+        "id": "d3",
+        "title": "Gateway trivia",
+        "text": "Three questions each, no looking things up. Signs and museum labels are fair game. Most right answers wins.",
+        "stat": "nerve",
+        "trivia": [
+          {
+            "q": "In what month and year was the arch put up over Main Street?",
+            "a": "September 1928. It was dedicated on September 13, during Peach Days."
+          },
+          {
+            "q": "How wide is the arch from post to post?",
+            "a": "66 feet."
+          },
+          {
+            "q": "The arch was paid for by citizen donations. How much did it cost?",
+            "a": "$2,400."
+          },
+          {
+            "q": "In what month and year did the Idle Isle Cafe open?",
+            "a": "May 1921."
+          },
+          {
+            "q": "The cafe's name came from a contest. What was the prize?",
+            "a": "$10."
+          },
+          {
+            "q": "What was the town called before it was renamed Brigham City in 1867?",
+            "a": "Box Elder."
+          }
+        ]
+      }
+    ],
+    "secrets": [
+      "Get your partner to say the word \"gateway\" without saying it yourself first.",
+      "Take a candid photo of your partner looking up at the arch, and don't let them notice until later.",
+      "Hold your partner's hand as you pass the arch, twice, without it seeming planned.",
+      "Get your partner to laugh out loud inside the museum. Quietly counts.",
+      "Slip the word \"peach\" into normal conversation three times before you get home.",
+      "Find something in the museum that reminds you of your partner, and tell them why before you leave the building.",
+      "Offer your partner the first bite of your dessert before they ask.",
+      "Get your partner to make up a name for the cafe that is \"something different from the ordinary\"."
+    ],
+    "boss": {
+      "name": "The Warden of the Gateway",
+      "text": "Find every relic of old Brigham together before sunset at 5:07 PM. Tick each one when you are both looking at it. All six ticks beat the boss. If a door is closed, seeing it from the sidewalk counts.",
+      "loot": "Key to the Gateway (imaginary, since the arch stays where it is)",
+      "parts": [
+        "The arch, seen from the north side and from the south side",
+        "The museum's permanent history exhibition",
+        "The marble-and-onyx soda fountain counter in the Idle Isle",
+        "Idle Isle Fine Candy, 41 South Main",
+        "Bert's Cafe, 89 South Main, open since 1929",
+        "The pillared courthouse with a clock in its dome (finding it from the street counts)"
+      ]
+    }
+  },
+  "achievement": {
+    "name": "Through the Gateway",
+    "text": "Walked under Brigham's great arch and dined in 1921."
+  },
+  "unverified": [
+    "Drive distance and times. The 22 miles and 25 to 30 minutes are my estimate, so let your maps app confirm, including which exit to take.",
+    "That the museum keeps its normal Saturday hours on Thanksgiving weekend. Its page lists no holiday closures, but phone (435) 226-1439 before you set out.",
+    "That the Idle Isle Cafe keeps its winter hours on Thanksgiving weekend, and its current menu and prices. The dishes named are from a 2023 article, before the new owners. Phone 435-734-2468.",
+    "The arch's exact wording. One source says \"Wild Bird Refuge\" and another \"Game Bird Refuge\". Whether it is lit at night now is also unconfirmed.",
+    "Hours for Peach City and for Idle Isle Fine Candy, and whether Bert's Cafe is still open in the afternoon (a 2024 article gave 7 AM to 2 PM).",
+    "Parking near the museum and on Main Street.",
+    "Exactly where the courthouse stands. A state travel page describes it, but I have no address, so it may be a short walk or a drive-by.",
+    "The forecast is for a point about 20 miles west, five days out. Cell coverage was not checked against a carrier map.",
+    "The map pin is placed from my estimate of the arch's position."
+  ],
+  "safetyCheck": [
+    {
+      "rule": 1,
+      "note": "Every challenge, duel and secret objective is done side by side. The walk between the museum and Main Street is taken together, and nothing needs you apart."
+    },
+    {
+      "rule": 2,
+      "note": "Not a remote spot. Every stop is in the middle of Brigham City, and the plan is in daylight apart from the last few minutes at sunset."
+    },
+    {
+      "rule": 3,
+      "note": "nightOk is false and there is no night modifier. The only dusk moment is on Main Street in the town center beside the open cafe, and you leave at 5:20 PM, before last light."
+    },
+    {
+      "rule": 4,
+      "note": "A public street, a free city museum and open businesses. Nothing abandoned, private or closed. A closed shop is only looked at from the sidewalk."
+    },
+    {
+      "rule": 5,
+      "note": "I-15 and town streets only. No closures posted, no snow in the forecast, highs above 40°F. No canyon, dirt or gravel."
+    },
+    {
+      "rule": 6,
+      "note": "Safety card included: cell, gas, hospital and a 6:30 PM back-by time."
+    },
+    {
+      "rule": 7,
+      "note": "The app won't let you set out until you tick the location-share reminder, and asks for a home check-in at the end. Nothing here works around it."
+    },
+    {
+      "rule": 8,
+      "note": "The winter checklist must be ticked before setting out, even for a town trip."
+    },
+    {
+      "rule": 9,
+      "note": "Veto and Bail buttons are always available. Both pay a reward and neither costs anything. The boss deadline is only a target; leaving early loses nothing."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Box Elder County: Brigham City Arch",
+      "url": "https://boxeldercountyut.gov/node/4321"
+    },
+    {
+      "label": "RoadArch: welcome signs (Brigham City)",
+      "url": "https://roadarch.com/sca/welcome3.html"
+    },
+    {
+      "label": "Wikipedia: Brigham City, Utah",
+      "url": "https://en.wikipedia.org/wiki/Brigham_City,_Utah"
+    },
+    {
+      "label": "Visit Utah: Brigham City",
+      "url": "https://www.visitutah.com/places-to-go/cities-and-towns/brigham-city"
+    },
+    {
+      "label": "Brigham City Museum of Art & History: visit",
+      "url": "https://museum.bcutah.gov/visit/"
+    },
+    {
+      "label": "Wikipedia: Brigham City Museum of Art & History",
+      "url": "https://en.wikipedia.org/wiki/Brigham_City_Museum_of_Art_%26_History"
+    },
+    {
+      "label": "Idle Isle Cafe: winter hours",
+      "url": "https://idleislecafe.com"
+    },
+    {
+      "label": "KSL: Century-old Brigham City cafe reopens (July 17, 2026)",
+      "url": "https://www.ksl.com/article/51599190/century-old-brigham-city-cafe-reopens"
+    },
+    {
+      "label": "Standard-Examiner: Idle Isle history and dishes (Apr 25, 2023)",
+      "url": "https://standard.net/news/business/2023/apr/25/idle-isle-gets-a-creative-boost-from-new-owner"
+    },
+    {
+      "label": "Box Elder County: places to eat",
+      "url": "https://boxeldercountyut.gov/tourism/page/eat-box-elder-county"
+    },
+    {
+      "label": "Brigham City Heritage Tours: Peach City",
+      "url": "https://tours.brighamcityhistory.org/stop/main-street-eateries/peach-city.html"
+    },
+    {
+      "label": "Brigham City Heritage Tours: Bert's Cafe",
+      "url": "https://tours.brighamcityhistory.org/stop/main-street-eateries/berts-cafe.html"
+    },
+    {
+      "label": "Brigham City Heritage Tours: Idle Isle Fine Candy",
+      "url": "https://tours.brighamcityhistory.org/stop/main-street-eateries/idle-isle-fine-candy-shop.html"
+    },
+    {
+      "label": "Standard-Examiner: Bert's Cafe (Feb 28, 2024)",
+      "url": "https://www.standard.net/lifestyle/food/2024/feb/28/berts-cafe-keeps-its-namesakes-mom-and-pop-charm/"
+    },
+    {
+      "label": "US Fish and Wildlife Service: Bear River refuge, Exit 363 and Forest Street",
+      "url": "https://www.fws.gov/refuge/bear-river-migratory-bird/visit-us"
+    },
+    {
+      "label": "Brigham City Community Hospital: emergency care",
+      "url": "https://mountainstar.com/locations/brigham-city-community-hospital/specialties/emergency-care"
+    },
+    {
+      "label": "Brigham City Community Hospital: contact",
+      "url": "https://www.mountainstar.com/locations/brigham-city-community-hospital/about-us/contact-us"
+    },
+    {
+      "label": "Maverik, 2241 S Highway 89 (listing)",
+      "url": "https://www.oilmonster.com/gas-station/maverik/brigham-city/2241-s-highway-89/7283"
+    },
+    {
+      "label": "National Weather Service point forecast",
+      "url": "https://forecast.weather.gov/zipcity.php?inputstring=84307"
+    },
+    {
+      "label": "UDOT Region One news",
+      "url": "https://connect.udot.utah.gov/category/region-one"
+    },
+    {
+      "label": "UDOT: I-15 Brigham City to Honeyville project",
+      "url": "https://udotinput.utah.gov/i15brighamcity"
+    },
+    {
+      "label": "Sunset times, Brigham City",
+      "url": "https://sunrisesunset.io/us/utah/brigham-city/"
+    },
+    {
+      "label": "AAA gas prices, Utah",
+      "url": "https://gasprices.aaa.com/?state=UT"
+    }
+  ]
+}
