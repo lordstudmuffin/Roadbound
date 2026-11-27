@@ -1,0 +1,359 @@
+{
+  "number": 4,
+  "season": 1,
+  "issued": "2026-11-27",
+  "title": "The Sphinx of Salt Lake",
+  "tagline": "A backyard full of stone visions, hiding in plain sight between two houses.",
+  "why": "Gilgal Sculpture Garden is a small city park hidden mid-block in Salt Lake City, where a masonry contractor named Thomas Child carved his beliefs into boulders. There is a sphinx with the face of Joseph Smith, a stone self-portrait in brick trousers with a Bible under one arm and blueprints under the other, and more than 70 stones engraved with scripture and poems. He started at age 57 and died in 1963. A plan was once floated to tear it down for condominiums. Instead it reopened as a city park on October 21, 2000. The garden's own site calls it the only identified visionary art environment in Utah. This is your first quest beyond the home counties.",
+  "bestDays": "Saturday afternoon, Nov 28 is the pick if you are not already bound for Brigham City that day: rain is likely before 11 AM, then it turns mostly sunny with a high near 50°F. Sunday, Nov 29 is drier (partly sunny, high near 54°F), but the chocolate shop is closed Sundays and Mondays, so use the backup rest stop. Any Tuesday to Saturday after that works too. The garden is open every day, 9 AM to 5 PM, and closed on Christmas and New Year's Day.",
+  "nightOk": false,
+  "place": {
+    "name": "Gilgal Sculpture Garden",
+    "short": "Gilgal",
+    "address": "749 E 500 S, Salt Lake City, UT",
+    "lat": 40.7593,
+    "lon": -111.8692,
+    "hours": "October to March: 9 AM to 5 PM, every day (Wikipedia adds \"weather permitting\"). Closed New Year's Day, Thanksgiving and Christmas.",
+    "cost": "Free",
+    "parking": "Street parking on 500 South between 700 and 800 East, in front of the garden entrance. The garden is wheelchair accessible, and walking-tour brochures are available at the garden."
+  },
+  "drive": {
+    "summary": "Riverdale to Salt Lake City on I-15 south, roughly 35 to 38 miles and 40 to 45 minutes each way (my estimate). Interstate and city streets the whole way, all paved. Expect extra traffic on Thanksgiving weekend."
+  },
+  "conditions": {
+    "checked": "Nov 27, 2026",
+    "forecast": "National Weather Service for Salt Lake City, issued Nov 26: Friday night a 50 percent chance of rain after 11 PM, low around 43°F. Saturday Nov 28, rain likely (70 percent), mainly before 11 AM, then gradually mostly sunny, high near 50°F, low around 35°F overnight. Sunday Nov 29 partly sunny, high near 54°F. No snow in any period and no alerts listed. The forecast was a day old when I read it, so look again that morning.",
+    "roads": "Rain, not snow, with temperatures above freezing through Saturday evening, so wet pavement in the morning and no ice expected. UDOT's Region One page lists no closures for Nov 27 to 29 between Ogden and Salt Lake City; its newest closure notice (Nov 5) covered Nov 5 to 9 only. UDOT posted a Thanksgiving weekend travel notice on Nov 24 that I could not open, so check the UDOT Traffic app for delays before you leave.",
+    "sunset": "5:09 PM on Sat Nov 28, with last light about 5:39 PM. 5:08 PM on Sun Nov 29.",
+    "car": "Fine for a Sentra. No dirt, gravel or mountain passes. Nothing in this forecast calls for chains or traction devices on this route."
+  },
+  "plan": {
+    "steps": [
+      {
+        "time": "12:45 PM",
+        "text": "Leave Riverdale with a full tank. I-15 south to Salt Lake City."
+      },
+      {
+        "time": "1:30 PM",
+        "text": "Park on 500 South in front of the garden entrance. Look for a walking-tour brochure at the garden."
+      },
+      {
+        "time": "1:30–3:15",
+        "text": "Explore the garden together. Co-op challenges, duels and the boss happen here. The garden closes at 5 PM."
+      },
+      {
+        "time": "3:30 PM",
+        "text": "Rest stop: hot chocolate at Hatch Family Chocolates in the Avenues, a short drive north."
+      },
+      {
+        "time": "4:20 PM",
+        "text": "Utah State Capitol grounds. Walk the 0.7-mile loop and watch the sun set over the valley at 5:09 PM."
+      },
+      {
+        "time": "5:30 PM",
+        "text": "Head home on I-15 north."
+      },
+      {
+        "time": "6:30 PM",
+        "text": "Home. Check in with your trusted person, then reveal secrets and seal the entry."
+      }
+    ]
+  },
+  "restStop": {
+    "name": "Hatch Family Chocolates",
+    "address": "376 8th Ave, Suite A, Salt Lake City, UT 84103",
+    "what": "A chocolate shop described as making hand-dipped chocolates and rich hot chocolate. Customer reviews mention a salted caramel hot chocolate and a dark one with Aztec spices; I did not see the shop's own menu.",
+    "hours": "Listed hours: Tuesday to Thursday noon to 9 PM, Friday and Saturday noon to 10 PM, closed Sunday and Monday. These come from a listing site, not the shop, and holiday weekends can differ, so call (801) 532-4912 before you go.",
+    "backup": "Desert Edge Brewery at The Pub, in Trolley Square (602 E 500 S), near the garden. Casual food, pasta salads and hearty sandwiches. Trolley Square's page lists Monday to Thursday 11:30 AM to 8 PM, Friday 11:30 AM to 9 PM, Saturday noon to 9 PM, and Sunday closing at 8 PM (the Sunday opening time is misprinted on the page). Phone 801-521-8917.",
+    "map": "Hatch Family Chocolates, 376 8th Ave, Salt Lake City, UT"
+  },
+  "skySpot": {
+    "kind": "Sunset spot",
+    "name": "Utah State Capitol grounds",
+    "address": "350 N State St, Salt Lake City, UT",
+    "notes": "A 0.7-mile tree-lined loop circles the Capitol, past memorials and statues, with views of the mountains and the downtown skyline. The building is open until 6 PM Friday to Sunday if you want to warm up inside. Public lots are on the east and northeast sides, and street parking is allowed unless signs say otherwise. The east entrance is under construction, so follow the signs to the north entrance. Central and public, so it is fine to stay through sunset. No dark-sky stargazing here; the city is too bright.",
+    "map": "Utah State Capitol, 350 N State St, Salt Lake City, UT"
+  },
+  "costs": {
+    "gas": "About $8. Roughly 75 miles round trip at the Sentra's 33 mpg combined, with Ogden's average at $3.61 a gallon on Nov 27.",
+    "food": "About $15 to $20 for two hot chocolates and a few chocolates to share.",
+    "entry": "Free (garden and Capitol grounds)",
+    "total": "About $23 to $28 for two",
+    "notes": "The food figure is my estimate. I could not find current menu prices. The Capitol's page does not state a parking cost."
+  },
+  "safety": {
+    "cell": "Central Salt Lake City and the I-15 corridor are built-up the whole way, so normal service is expected and I know of no dead zones on this route. I did not check your carrier's coverage map.",
+    "gas": "Fill up before leaving Riverdale; the round trip uses a little over two gallons. A listed station downtown: Chevron, 504 S West Temple, west of the garden. Phone 1 (801) 328-1432.",
+    "hospital": "Holy Cross Hospital – Salt Lake, 1050 East South Temple, Salt Lake City, east of downtown and close to the garden. 24/7 emergency care. 801-350-4111.",
+    "backBy": "6:45 PM",
+    "notes": "Everything on this quest is a public city park, an open business or the Capitol grounds. Stay on the garden paths and look at the sculptures without climbing on them. The drive home is after dark but on the interstate the whole way.",
+    "gasMap": "Chevron, 504 S West Temple, Salt Lake City, UT",
+    "hospitalMap": "Holy Cross Hospital Salt Lake, 1050 E South Temple, Salt Lake City, UT"
+  },
+  "modifiers": [
+    {
+      "id": "budget",
+      "name": "Budget run",
+      "text": "Food and fun under $25 for the two of you. Gas doesn't count."
+    },
+    {
+      "id": "passenger-dj",
+      "name": "Passenger's playlist only",
+      "text": "Whoever isn't driving picks every song, both ways. The driver's hands stay on the wheel."
+    },
+    {
+      "id": "dress",
+      "name": "Dress for the vibe",
+      "text": "Arrive dressed as 1940s stonemasons, museum curators, or tourists from the wrong decade."
+    },
+    {
+      "id": "guides",
+      "name": "Unreliable tour guides",
+      "text": "At each sculpture, one of you gives a confident, completely made-up explanation before anyone reads the brochure. Take turns."
+    },
+    {
+      "id": "silent",
+      "name": "Silent film",
+      "text": "Your first ten minutes in the garden are wordless. Gestures and eyebrows only, side by side."
+    }
+  ],
+  "challenges": {
+    "coop": [
+      {
+        "id": "c1",
+        "title": "Sphinx selfie",
+        "text": "Take a team photo with the Sphinx, both of you in frame.",
+        "stat": "charm"
+      },
+      {
+        "id": "c2",
+        "title": "The mason's trousers",
+        "text": "Find the stone self-portrait of Thomas Child, and spot three things: his brick trousers, the Bible under one arm and the blueprints under the other.",
+        "stat": "eye"
+      },
+      {
+        "id": "c3",
+        "title": "Read me a rock",
+        "text": "Each of you picks one engraved stone and reads it aloud to the other, in your best serious voice.",
+        "stat": "nerve"
+      },
+      {
+        "id": "c4",
+        "title": "Uncharted cocoa",
+        "text": "At the rest stop, order a hot chocolate flavor neither of you has tried, and share it.",
+        "stat": "snack"
+      }
+    ],
+    "duels": [
+      {
+        "id": "d1",
+        "title": "First to spot the grasshopper",
+        "text": "One of the sculptures, drawn from the last chapter of Ecclesiastes, includes a grasshopper carved from a green boulder. Walk the garden together. First to point at it wins.",
+        "stat": "eye"
+      },
+      {
+        "id": "d2",
+        "title": "Best sculpture photo",
+        "text": "Each of you takes one photo of any sculpture. Text both to your trusted person without saying whose is whose, and let them pick.",
+        "stat": "charm"
+      },
+      {
+        "id": "d3",
+        "title": "Gilgal trivia",
+        "text": "Three questions each, no looking things up. The brochure and the stones themselves are fair game. Most right answers wins.",
+        "stat": "nerve",
+        "trivia": [
+          {
+            "q": "How old was Thomas Child when he started the garden?",
+            "a": "57."
+          },
+          {
+            "q": "What welding tool was used to cut the stone?",
+            "a": "An oxyacetylene torch."
+          },
+          {
+            "q": "How many original sculptures are in the garden?",
+            "a": "Twelve, plus more than 70 engraved stones."
+          },
+          {
+            "q": "What did a company once plan to build on this spot?",
+            "a": "Condominiums."
+          },
+          {
+            "q": "On what date did Gilgal reopen as a city park?",
+            "a": "October 21, 2000."
+          },
+          {
+            "q": "Child said visitors might think he was a what?",
+            "a": "\"A nut.\" He hoped he had aroused their thinking and curiosity."
+          }
+        ]
+      }
+    ],
+    "secrets": [
+      "Get your partner to laugh out loud at the weirdest sculpture.",
+      "Get your partner to say the word \"nut\" without saying it yourself.",
+      "Take a candid photo of your partner reading a stone, and don't let them notice until later.",
+      "Get your partner to strike a sphinx pose for a photo without telling them it's your mission.",
+      "Hold your partner's hand at three different sculptures without it seeming planned.",
+      "Work a line from an engraved stone into normal conversation before you get home.",
+      "While you're both at the counter, pay for one chocolate for your partner (under $5) before they notice.",
+      "Get your partner to invent a backstory for one sculpture and deliver it in a tour-guide voice."
+    ],
+    "boss": {
+      "name": "The Fourteen Stones of Gilgal",
+      "text": "Using the walking-tour brochure, or the tour list on the garden's website if the brochure box is empty, find every named stop in the garden together before it closes at 5 PM. Tick each one when you're both standing at it. All fourteen beats the boss.",
+      "loot": "Brochure of the Sphinx",
+      "parts": [
+        "The Sphinx",
+        "The Monument to the Trade",
+        "The Altar",
+        "Captain of the Lord's Host",
+        "Daniel II: Nebuchadnezzar's Dream",
+        "Elijah's Cave",
+        "Malachi",
+        "Testimony of Job",
+        "The Eagles",
+        "The Last Chapter of the Book of Ecclesiastes",
+        "The Monument to Peace",
+        "The Monument to the Priesthood",
+        "Bertha Child Memorial",
+        "Birdhouse"
+      ]
+    }
+  },
+  "achievement": {
+    "name": "Riddle of the Sphinx",
+    "text": "Stood before Utah's strangest sphinx and lived to tell of it."
+  },
+  "unverified": [
+    "Exact drive distance and time. The 35 to 38 miles and 40 to 45 minutes are my estimate, so let your maps app confirm. Thanksgiving weekend traffic may add to it.",
+    "The forecast I read was issued Nov 26, a day before I checked. UDOT's Nov 24 Thanksgiving travel notice would not open, so I could not read its expected delays.",
+    "Hatch Family Chocolates' hours come from a listing site, not the shop's own page. The hot chocolate flavours come from customer reviews, and I could not find menu prices.",
+    "Desert Edge's Sunday opening time is misprinted on Trolley Square's page, so I only know it closes at 8 PM.",
+    "The Capitol's pages give building hours but no grounds hours or parking cost.",
+    "Cell coverage was not checked against a carrier map. The Chevron's listing shows no opening hours.",
+    "The map pin uses coordinates from a reference site and may sit a little off the entrance. The Map link searches by street address instead.",
+    "The garden's pages do not post a rule about climbing on sculptures. The quest tells you not to anyway."
+  ],
+  "safetyCheck": [
+    {
+      "rule": 1,
+      "note": "Every challenge, duel and secret objective is done side by side. None needs you apart, including the chocolate-counter secret."
+    },
+    {
+      "rule": 2,
+      "note": "Not a remote spot. It is a city park in central Salt Lake City, visited in daylight anyway."
+    },
+    {
+      "rule": 3,
+      "note": "No night modifier is in this quest's pool and nightOk is false. The only stop near dusk is the State Capitol grounds, a central public place with the building open until 6 PM."
+    },
+    {
+      "rule": 4,
+      "note": "A public city park, an open shop and the State Capitol grounds. Nothing abandoned, private or closed."
+    },
+    {
+      "rule": 5,
+      "note": "Interstate and paved city streets only. The forecast is rain with temperatures above freezing, no snow, and no closures listed for the route."
+    },
+    {
+      "rule": 6,
+      "note": "Safety card included: cell, gas, hospital and a 6:45 PM back-by time."
+    },
+    {
+      "rule": 7,
+      "note": "The app won't let you set out until you tick the location-share reminder, and asks for a home check-in at the end."
+    },
+    {
+      "rule": 8,
+      "note": "The winter checklist must be ticked before setting out, even on a mild day."
+    },
+    {
+      "rule": 9,
+      "note": "Veto and Bail buttons are always available. Both pay a reward and neither costs anything."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Gilgal Garden: location and hours",
+      "url": "https://gilgalgarden.org/location/"
+    },
+    {
+      "label": "Gilgal Garden: FAQ (parking, closures, brochures)",
+      "url": "https://gilgalgarden.org/faq/"
+    },
+    {
+      "label": "Gilgal Garden: tour stops",
+      "url": "https://gilgalgarden.org/"
+    },
+    {
+      "label": "Gilgal Garden: The Monument to the Trade",
+      "url": "https://gilgalgarden.org/the-monument-to-the-trade/"
+    },
+    {
+      "label": "Gilgal Garden: The Last Chapter of the Book of Ecclesiastes",
+      "url": "https://gilgalgarden.org/the-last-chapter-of-the-book-of-ecclesiastes/"
+    },
+    {
+      "label": "Gilgal Garden: The Sphinx",
+      "url": "https://gilgalgarden.org/the-sphinx/"
+    },
+    {
+      "label": "Salt Lake City Public Lands: Gilgal Garden",
+      "url": "https://www.slc.gov/parks/gilgal-garden"
+    },
+    {
+      "label": "Wikipedia: Gilgal Sculpture Garden",
+      "url": "https://en.wikipedia.org/wiki/Gilgal_Sculpture_Garden"
+    },
+    {
+      "label": "Latitude.to: Gilgal Sculpture Garden coordinates",
+      "url": "https://latitude.to/articles-by-country/us/united-states/89308/gilgal-sculpture-garden"
+    },
+    {
+      "label": "National Weather Service forecast, Salt Lake City",
+      "url": "https://forecast.weather.gov/MapClick.php?lat=40.758478&lon=-111.888142"
+    },
+    {
+      "label": "UDOT Region One notices",
+      "url": "https://connect.udot.utah.gov/category/region-one/"
+    },
+    {
+      "label": "Sunset times, Salt Lake City",
+      "url": "https://sunrisesunset.io/us/utah/salt-lake-city/"
+    },
+    {
+      "label": "Hatch Family Chocolates listing",
+      "url": "https://joe.coffee/locations/ut/salt-lake-city/hatch-family-chocolates-salt-lake-city/"
+    },
+    {
+      "label": "Trolley Square: Desert Edge Brewery",
+      "url": "https://www.trolleysquare.com/desert-edge-brewery"
+    },
+    {
+      "label": "Visit Utah: Utah State Capitol",
+      "url": "https://www.visitutah.com/places-to-go/cities-and-towns/salt-lake-city/utah-state-capitol"
+    },
+    {
+      "label": "Utah State Capitol: parking and directions",
+      "url": "https://utahstatecapitol.utah.gov/parking-maps-directions/"
+    },
+    {
+      "label": "Holy Cross Hospital – Salt Lake emergency department",
+      "url": "https://www.mountain.commonspirit.org/location/holy-cross-hospital-salt-lake/emergency-department"
+    },
+    {
+      "label": "AAA gas prices, Utah",
+      "url": "https://gasprices.aaa.com/?state=UT"
+    },
+    {
+      "label": "2022 Nissan Sentra fuel economy",
+      "url": "https://mpgbuddy.com/cars/nissan/sentra/2022"
+    },
+    {
+      "label": "GasBuddy: Chevron, 504 S West Temple",
+      "url": "https://www.gasbuddy.com/station/40397"
+    }
+  ]
+}
